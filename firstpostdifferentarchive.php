@@ -11,10 +11,15 @@
 
 		<?php
 // Start the Loop.
+		$i = 0;
 		while ( have_posts() ) :
 			the_post();
 			?>
+			<?php if ( $i == 0 ) : ?>
+					<div class="col-xs-12 col-sm-6">
+			<?php else : ?>
 					<div class="col-xs-12 col-sm-3">
+			<?php endif ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
 		<?php if ( has_post_thumbnail() ) : ?>
@@ -39,12 +44,13 @@
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">
-					<?php echo excerpt(15); ?>
+					<?php the_excerpt(); ?>
 				</div><!-- .entry-content -->
 			</article><!-- #post-<?php the_ID(); ?> -->
 		</div>
 			<?php
 // End the loop.
+			$i++;
 		endwhile;
 		?>
 	</div>

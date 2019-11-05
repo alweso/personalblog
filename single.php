@@ -6,12 +6,25 @@
  ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<h1> this is the date <?php the_date( 'l F j, Y' ); ?> </h1>
+		<h1> this is the author <?php the_author(); ?> </h1>
+
+		<p class="author-description">
+		<?php the_author_meta( 'description' ); ?>
+		<a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+			View more posts of this author
+		</a>
+	</p><!-- .author-description -->
+
+
+		<?php echo get_avatar( get_the_author_meta( 'ID' )); ?>
+
 		<?php if ( has_post_thumbnail() ) : ?>
 		    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 		        <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-fluid', 'title' => 'Feature image']); ?>
 		    </a>
 		<?php endif; ?>
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header>
 
 	<div class="entry-content">

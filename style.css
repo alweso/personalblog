@@ -8,7 +8,47 @@ Version: 1.0
 Text Domain: pascarubuddy
 */
 
+/*bootstrap override
+*/
 
 
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
 
- .wp-caption, .wp-caption-text,  .screen-reader-text, .gallery-caption, .bypostauthor,  .alignright, .alignleft , .aligncenter {}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* ------------------------------------ */
+
+ .wp-caption, .wp-caption-text,  .screen-reader-text, .gallery-caption, .bypostauthor {}
+ .alignright {float: right;}
+ .alignleft {float: left;} 
+.archive {background: #e6e6e6}
+.post.type-post {height: 430px;background: #fff;margin-bottom: 20px}
+.post.type-post header>a {display: block;height: 145px;overflow: hidden;}
+.author-avatar {width: 25px;height: 25px;}
+.author-avatar>img {width: 100%;height: auto;}
