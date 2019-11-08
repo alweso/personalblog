@@ -24,8 +24,7 @@
 		get_template_part( 'template-parts/archive-post/content', 'none' ); 
 	endif;
 	?>
-	<div class="nav-previous alignleft"><?php previous_posts_link( 'Older posts' ); ?></div>
-	<div class="nav-next alignright"><?php next_posts_link( 'Newer posts' ); ?></div>
+	<h2><?php the_posts_pagination(); ?></h2>
 </div><!-- /.blog-main -->
 <!-- <?php get_sidebar(); ?> -->
 </div> <!-- / .row -->
