@@ -7,8 +7,16 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		<h1> this is the date <?php the_date( 'l F j, Y' ); ?> </h1>
-		<h1> this is the author <?php the_author(); ?> </h1>
+		<?php the_category() ?>
+		<div class="author-and-date d-flex">
+						<a href="#" class="author-avatar">
+							<?php echo get_avatar( get_the_author_meta( 'ID' )); ?>
+						</a>
+						<div>
+							<p>by <?php the_author(); ?></p>
+							<?php the_date( 'F j, Y' ); ?> 
+						</div>
+					</div>
 
 		<p class="author-description">
 		<?php the_author_meta( 'description' ); ?>
@@ -67,4 +75,6 @@
 <?php posts_nav_link(); ?>
 </div><!-- /.blog-main -->
 <?php get_sidebar(); ?>
+</div> <!-- / .row -->
+</div> <!-- / .container -->
 <?php get_footer(); ?>

@@ -25,7 +25,6 @@
 	endif;
 	?>
 	<div class="nav-previous alignleft"><?php previous_posts_link( 'Older posts' ); ?></div>
-	<?php the_posts_pagination(); ?>
 	<div class="nav-next alignright"><?php next_posts_link( 'Newer posts' ); ?></div>
 </div><!-- /.blog-main -->
 <!-- <?php get_sidebar(); ?> -->

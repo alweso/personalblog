@@ -47,8 +47,12 @@ Text Domain: pascarubuddy
  .wp-caption, .wp-caption-text,  .screen-reader-text, .gallery-caption, .bypostauthor {}
  .alignright {float: right;}
  .alignleft {float: left;} 
-.archive {background: #e6e6e6}
-.post.type-post {height: 430px;background: #fff;margin-bottom: 20px}
+.archive, .blog {background: #e6e6e6}
+.blog .post, .archive .post {height: 430px;background: #fff;margin-bottom: 20px}
 .post.type-post header>a {display: block;height: 145px;overflow: hidden;}
 .author-avatar {width: 25px;height: 25px;}
 .author-avatar>img {width: 100%;height: auto;}
+
+
+.blog .post.format-quote, .archive .post.format-quote {background: rgb(32,210,202);
+background: linear-gradient(280deg, rgba(32,210,202,1) 0%, rgba(20,185,33,1) 35%, rgba(0,212,255,1) 100%);color:#fff;}
