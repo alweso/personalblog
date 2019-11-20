@@ -19,7 +19,7 @@
 														<div style="position: absolute;height: 100%;background: rgba(0,0,0,0.4);width:100%;top:0">
 															
 							<header class="entry-header">
-								<h1 class="entry-title" style="color:#fff"><?php the_title(); ?></h1>
+								<h1 class="entry-title" style="color:#ffffff"><?php the_title(); ?></h1>
 							</header>
 														</div>
 						</div>
