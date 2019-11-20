@@ -9,9 +9,9 @@
 		<blockquote><?php echo excerpt(15); ?></blockquote>
 		<h4><?php the_title(); ?></h4>
 		<div class="author-and-date d-flex">
-			<a href="#" class="author-avatar">
+			<!-- <a href="#" class="author-avatar">
 				<?php echo get_avatar( get_the_author_meta( 'ID' )); ?>
-			</a>
+			</a> -->
 			<div>
 				<p>by <?php the_author(); ?></p>
 				<?php the_date( 'F j, Y' ); ?> 

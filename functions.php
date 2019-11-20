@@ -74,18 +74,18 @@ register_nav_menus( array(
 // add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 function excerpt($limit) {
-      $excerpt = explode(' ', get_the_excerpt(), $limit);
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
 
-      if (count($excerpt) >= $limit) {
-          array_pop($excerpt);
-          $excerpt = implode(" ", $excerpt) . '...';
-      } else {
-          $excerpt = implode(" ", $excerpt);
-      }
+  if (count($excerpt) >= $limit) {
+      array_pop($excerpt);
+      $excerpt = implode(" ", $excerpt) . '...';
+  } else {
+      $excerpt = implode(" ", $excerpt);
+  }
 
-      $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
+  $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
 
-      return $excerpt;
+  return $excerpt;
 }
 
 function content($limit) {
@@ -104,4 +104,21 @@ function content($limit) {
 
     return $content;
 }
+
+
+function themename_custom_header_setup() {
+    $args = array(
+        'default-image'      => get_template_directory_uri() . 'img/default-image.jpg',
+        'default-text-color' => '000',
+        'width'              => 1000,
+        'height'             => 250,
+        'flex-width'         => true,
+        'flex-height'        => true,
+    );
+    add_theme_support( 'custom-header', $args );
+}
+add_action( 'after_setup_theme', 'themename_custom_header_setup' );
+
+
+
 ?>

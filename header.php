@@ -11,18 +11,23 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <?php wp_head(); ?>
+<script src="https://kit.fontawesome.com/eb33fc95bf.js" crossorigin="anonymous"></script>
 </head>
 
 <body <?php body_class(); ?>>
 
-
-<nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
+<div>
+    <?php
+    get_search_form(true);
+    ?>
+</div>
+<nav class="navbar navbar-expand-md" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="#"/></a>
         <?php
         wp_nav_menu( array(
             'theme_location'    => 'primary',
@@ -38,16 +43,5 @@
     </div>
 </nav>
 
-<div class="container">
-<div class="row">
-<div class="col-sm-12">
-<div class="blog-header">
-<h1 class="blog-title"><?php bloginfo( 'name' ); ?></h1>
-<?php $description = get_bloginfo( 'description', 'display' ); ?>
-<?php if($description) { ?><p class="lead blog-description"><?php echo $description ?></p><?php } ?>
-</div>
-</div>
-</div>
-
-
-<div class="row">
+<!-- <div class="container">
+<div class="row"> -->

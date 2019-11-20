@@ -1,0 +1,219 @@
+/*
+Theme Name: pascarubuddy
+Theme URI: 
+Author: Aleksandra Pascaru
+Author URI: 
+Description: A basic theme using the Bootstrap framework.
+Version: 1.0
+Text Domain: pascarubuddy
+*/
+
+/*bootstrap override
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Oswald&display=swap&subset=cyrillic,cyrillic-ext,vietnamese');
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* ---------------------------------- variables ------------------------------------- */
+
+$base-color: #58a89d;
+$medium-grey: #5f5f5f;
+$light-grey: #b6b6b6;
+/* -------------------- general -------------------------------- */
+body {font-size: 16px;font-family: "Open Sans";line-height: 1.3em;}
+h1 {font-size: 3.3em; font-family: "Oswald";}
+h2, h2.elementor-heading-title {font-size: 2.875em; font-family: "Oswald";}
+h3 {font-size: 2.1875em; font-family: "Oswald";}
+h4 {font-size: 1.625em; font-family: "Oswald";}
+h5 {font-size: 1.25; font-family: "Oswald";}
+h6 {font-size: 0.875em; font-family: "Oswald";}
+p {}
+a {color: $base-color}
+span {}
+b {}
+strong {}
+label {}
+hr {margin: 3em 8em;}
+blockquote {margin: 1.5em 0;
+  position:relative;
+  font-style: italic;
+  padding-left:42px;
+
+&:before {
+  font-family: "FontAwesome";
+  content: "\f10d";
+  font-size: 30px;
+  font-style: normal;
+  color: $base-color;
+  position: absolute;
+  top: 0;
+  left: 0;
+}}
+ul {}
+li {}
+ol {}
+input[type=search], input[type=text], input[type=password], textarea {border: 1px solid $light-grey;border-radius:2px;box-shadow:none;}
+button, input[type=submit], input[type=reset] {background: $base-color; color: #fff; border: none; border-radius: 5px;padding: 3px 16px;}
+
+/* ------------------------------- Elementor --------------------------------- */
+.elementor-widget-heading .elementor-heading-title {font-family: Oswald !important;color: #212529 !important}
+
+
+/* ------------------------------ main menu ------------------------------- */
+.navbar {
+  border-bottom: 1px solid #e6e6e6;
+  background: #fff;
+  a.navlink {
+    font-weight: 300;
+    color: $base-color;
+  }
+}
+
+
+ .wp-caption, .wp-caption-text,  .screen-reader-text, .gallery-caption, .bypostauthor {}
+ .alignright {float: right;margin-left: 20px;margin-bottom:10px;}
+ .alignleft {float: left;margin-right: 20px;margin-bottom:10px;} 
+
+/* ------------------- author avatar ------------------------------- */
+// .author-avatar {width: 25px;height: 25px;}
+// .author-avatar>img {width: 100%;height: auto;}
+
+
+/* -------------------- blog, archives, categories, tags etc ---------------- */
+
+.archive, .blog {background: #e6e6e6}
+.blog .post, .archive .post {height: 430px;background: #fff;margin-bottom: 20px}
+.archive .post.type-post header>a, .blog .post.type-post header>a {display: block;height: 145px;overflow: hidden;}
+.blog .post.format-quote, .archive .post.format-quote {background: rgb(32,210,202);
+background: linear-gradient(280deg, rgba(32,210,202,1) 0%, rgba(20,185,33,1) 35%, rgba(0,212,255,1) 100%);color:#fff;}
+
+
+/* -------------------- single post styling --------------------------- */
+
+.single-post {
+  .post-container {
+    margin-top: 40px;
+  }
+  .entry-header .wp-post-image {
+    margin-bottom: 15px;width: 100%;height: auto;
+  }
+  img {max-width: 100%;height:auto;}
+  .post-categories {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-right: 15px;
+    }
+  }
+
+  .author-and-date {
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 20px;
+    font-size: 0.85em;
+    img {
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+    }
+  }
+
+  .heateor_sss_sharing_container.heateor_sss_horizontal_sharing {
+    margin-bottom: 35px;
+    border-top: 1px solid $light-grey;
+    padding-top: 20px;
+    .heateor_sss_sharing_title {
+        font-weight: 600 !important;
+        margin-bottom: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    }
+  }
+}
+
+/* --------------------------- gallery lightbox plugin ---------------------------------- */
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  // .wp-block-gallery {margin-left:-65px;margin-right:-130px;}
+    .wp-block-gallery {margin-left:-65px;margin-right:-130px;}
+
+
+}
+
+// @media (min-width: 1600px) {
+//   .wp-block-responsive-lightbox-gallery {margin-left:-65px;margin-right:-130px;}
+// }
+
+
+/* --------------------------- widgets --------------------------------------- */
+.sidebar-module {    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 20px;}
+
+/* calendar widget */
+.widget_calendar {float: left;}
+#wp-calendar {width: 100%; }
+#wp-calendar caption { text-align: right; color: #333; font-size: 12px; margin-top: 10px; margin-bottom: 15px; }
+#wp-calendar thead { font-size: 10px; }
+#wp-calendar thead th { padding-bottom: 10px; }
+#wp-calendar tbody { color: #aaa; }
+#wp-calendar tbody td { background: #f5f5f5; border: 1px solid #fff; text-align: center; padding:8px;}
+#wp-calendar tbody td:hover { background: #fff; }
+#wp-calendar tbody .pad { background: none; }
+#wp-calendar tfoot #next { font-size: 10px; text-transform: uppercase; text-align: right; }
+#wp-calendar tfoot #prev { font-size: 10px; text-transform: uppercase; padding-top: 10px; }
+
+/* --------------------------- comment-form --------------------------- */
+
+.comment-form {
+  &-comment {
+    label {
+      display: block;
+    }
+    textarea {
+      width: 100%;
+    }
+  }
+}
+
+
+/* -------------------- youtube gallery in post ------------------------------ */
+.epyt-gallery-thumb {}
+.epyt-gallery-title {text-align: left; padding: 10px 0 !important; font-weight:600;color: $medium-grey}
+
+/* ------------------------------- Wordpress elements ---------------------------------------- */
+
+.entry-title {margin-bottom: 20px;}

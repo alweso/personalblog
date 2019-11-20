@@ -6,13 +6,13 @@
 			</a>
 		<?php endif; ?>
 		<?php
-		the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+		the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h4>' );
 		?>
 		<?php the_category() ?>
 		<div class="author-and-date d-flex">
-			<a href="#" class="author-avatar">
+	<!-- 		<a href="#" class="author-avatar">
 				<?php echo get_avatar( get_the_author_meta( 'ID' )); ?>
-			</a>
+			</a> -->
 			<div>
 				<p>by <?php the_author(); ?></p>
 				<?php the_date( 'F j, Y' ); ?> 
