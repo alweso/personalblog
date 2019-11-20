@@ -81,7 +81,7 @@ ul {}
 li {}
 ol {}
 input[type=search], input[type=text], input[type=password], textarea {border: 1px solid $light-grey;border-radius:2px;box-shadow:none;}
-button, input[type=submit], input[type=reset] {background: $base-color; color: #fff; border: none; border-radius: 5px;padding: 3px 16px;}
+button, input[type=submit], input[type=reset] {background: $base-color; color: #fff; border: none; border-radius: 2px;padding: 8px 21px;}
 
 /* ------------------------------- Elementor --------------------------------- */
 .elementor-widget-heading .elementor-heading-title {font-family: Oswald !important;color: #212529 !important}

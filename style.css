@@ -109,8 +109,8 @@ button, input[type=submit], input[type=reset] {
   background: #58a89d;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 3px 16px;
+  border-radius: 2px;
+  padding: 8px 21px;
 }
 
 /* ------------------------------- Elementor --------------------------------- */

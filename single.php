@@ -1,12 +1,13 @@
 <?php get_header(); ?>
 <div class="container post-container">
 <div class="row">
-<div class="col-sm-8 offset-sm-2 blog-main">
+
 	<?php 
 	if ( have_posts() ) { 
 		while ( have_posts() ) : the_post();
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<div class="col-sm-12 blog-main">
 				<header class="entry-header">
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
@@ -29,7 +30,8 @@
 		</a>
 	<?php endif; ?>
 </header>
-
+</div>
+<div class="col-sm-8 offset-sm-2 blog-main">
 <div class="entry-content">
 	<?php
 	the_content(
