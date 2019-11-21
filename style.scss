@@ -36,15 +36,28 @@ Text Domain: pascarubuddy
   }
 }
 
+@media (min-width: 1300px) {
+  .container {
+    max-width: 1240px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1340px;
+  }
+}
+
 @media (min-width: 1600px) {
   .container {
-    max-width: 1400px;
+    max-width: 1540px;
   }
 }
 
 /* ---------------------------------- variables ------------------------------------- */
 
 $base-color: #58a89d;
+$secondary-color: #142f56;
 $medium-grey: #5f5f5f;
 $light-grey: #b6b6b6;
 /* -------------------- general -------------------------------- */
@@ -52,7 +65,7 @@ body {font-size: 16px;font-family: "Open Sans";line-height: 1.3em;}
 h1 {font-size: 3.3em; font-family: "Oswald";}
 h2, h2.elementor-heading-title {font-size: 2.875em; font-family: "Oswald";}
 h3 {font-size: 2.1875em; font-family: "Oswald";}
-h4 {font-size: 1.625em; font-family: "Oswald";}
+h4 {font-size: 1.625em; font-family: "Oswald";margin-bottom:20px;}
 h5 {font-size: 1.25; font-family: "Oswald";}
 h6 {font-size: 0.875em; font-family: "Oswald";}
 p {}
@@ -80,21 +93,139 @@ blockquote {margin: 1.5em 0;
 ul {}
 li {}
 ol {}
-input[type=search], input[type=text], input[type=password], textarea {border: 1px solid $light-grey;border-radius:2px;box-shadow:none;}
-button, input[type=submit], input[type=reset] {background: $base-color; color: #fff; border: none; border-radius: 2px;padding: 8px 21px;}
+input[type=search], input[type=text], input[type=password], textarea {box-sizing: border-box;border: 1px solid $light-grey;border-radius:2px;box-shadow:none;    height: 37px;
+    padding-left: 10px;}
+button, input[type=submit], input[type=reset] {box-sizing: border-box;background: $base-color; color: #fff; border: none; border-radius: 2px;height:37px;padding: 0 21px;}
+button.light, input[type=submit].light, input[type=reset].light {background: transparent;border: 2px solid rgba(255,255,255,0.3);color: rgba(255,255,255,0.8)}
+button {position:relative;overflow:hidden;}
+button:before {
+  content: "";
+  display: block;
+  background:white;
+  height:150px;
+  width:150px;
+  left:-150px;
+  top:-200px;
+ position:absolute;
+ transform:scale(1);
+  border-radius:100%;
+}
 
+button:hover:before {
+  background:rgba(255,255,255,0.15);
+  transform:scale(4);
+  transition: transform .3s ease-out;
+}
+/* ------------------------------------- search form in menu ------------------------------- */
+.search-form {
+  position: relative;
+  width:230px;
+  label {margin-bottom:0}
+  button {    position: absolute;
+    right: 30px;
+    z-index: 1;
+    color: $base-color;
+    background: transparent;}
+}
+/* -------------------------------- table design -------------------------------------------- */
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
 /* ------------------------------- Elementor --------------------------------- */
 .elementor-widget-heading .elementor-heading-title {font-family: Oswald !important;color: #212529 !important}
 
 
 /* ------------------------------ main menu ------------------------------- */
-.navbar {
-  border-bottom: 1px solid #e6e6e6;
-  background: #fff;
-  a.navlink {
-    font-weight: 300;
-    color: $base-color;
-  }
+.main-header {
+    background: $secondary-color;
+    position: relative;
+    z-index: 1;
+    a.nav-link {
+      font-weight: 300;
+      color: $base-color;
+    }
+    .custom-logo-link {
+      height: 37px;
+      margin-right:30px;
+      img {height:100%;width:auto;}
+    }
 }
 
 
@@ -109,23 +240,101 @@ button, input[type=submit], input[type=reset] {background: $base-color; color: #
 
 /* -------------------- blog, archives, categories, tags etc ---------------- */
 
-.archive, .blog {background: #e6e6e6}
-.blog .post, .archive .post {height: 430px;background: #fff;margin-bottom: 20px}
-.archive .post.type-post header>a, .blog .post.type-post header>a {display: block;height: 145px;overflow: hidden;}
-.blog .post.format-quote, .archive .post.format-quote {background: rgb(32,210,202);
-background: linear-gradient(280deg, rgba(32,210,202,1) 0%, rgba(20,185,33,1) 35%, rgba(0,212,255,1) 100%);color:#fff;}
+// .archive, .blog {background: #e6e6e6}
+// .blog .post, .archive .post {height: 430px;background: #fff;margin-bottom: 20px}
+// .archive .post.type-post header>a, .blog .post.type-post header>a {display: block;height: 145px;overflow: hidden;}
+// .blog .post.format-quote, .archive .post.format-quote {background: rgb(32,210,202);
+// background: linear-gradient(280deg, rgba(32,210,202,1) 0%, rgba(20,185,33,1) 35%, rgba(0,212,255,1) 100%);color:#fff;}
 
+/* -------------------------categories ------------------------------- */
 
+.categories {
+    ul li {
+      a {
+        color: $medium-grey;
+      }
+    &:after {
+      content: "";
+    display: inline-block;
+    width:8px;
+    height: 8px;
+    margin-bottom: 2px;
+    margin-left: 19px;
+      background: $base-color;
+    }
+    &:first-of-type {
+          &:before {
+      content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-bottom: 2px;
+    margin-right: 19px;
+      background: $base-color;
+    }
+    }
+    }
+    &--on-dark {
+      ul li a {
+        color: white;
+      }
+    }
+}
 /* -------------------- single post styling --------------------------- */
+.post-template-single-full-screen-top-image, .post-template-single-full-width-top-image {
+  .main-header {
+    .navbar {
+      background: transparent !important;
+    }
+      background: transparent;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      a.nav-link {
+        font-weight: 400;
+        color: #fff !important;
+      }
+  }
 
+  .header-wrap {
+  margin-top: -54px;background-attachment:fixed !important;
+  .dark-background {
+    position: absolute;height: 100%;width:100%;top:0;display: table;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.99+0,0.4+100;Neutral+Density */
+background: -moz-linear-gradient(top,  rgba(61, 64, 74,0.85) 0%, rgba(61, 64, 74,0.6) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(61, 64, 74, 0.85) 0%,rgba(61, 64, 74,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(61, 64, 74,0.85) 0%,rgba(61, 64, 74,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
+
+  } 
+}
+}
+
+.post-template-default {
+  // background: whitesmoke;
+  .feature-image img {
+    // margin-left: calc(25% - 25vw);
+    // margin-right: calc(25% - 25vw);
+  }
+  .entry-title {
+        border-left: 5px solid $base-color;
+    padding-left: 29px;
+    margin-top: 20px;
+    font-size: 36px;
+  }
+  .post-container {
+    background: #fff;
+    padding-top: 35px;
+  }
+}
 .single-post {
   .post-container {
-    margin-top: 40px;
+    margin-top: 20px;
+    img {max-width: 100%;height:auto;}
   }
   .entry-header .wp-post-image {
     margin-bottom: 15px;width: 100%;height: auto;
   }
-  img {max-width: 100%;height:auto;}
   .post-categories {
     display: inline-block;
     margin: 0;
@@ -146,6 +355,22 @@ background: linear-gradient(280deg, rgba(32,210,202,1) 0%, rgba(20,185,33,1) 35%
       -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
       filter: grayscale(100%);
     }
+    &--on-transparent {
+    border: none;
+    color: #fff;
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    img {
+      border-radius: 100%;
+      margin-right: 10px;
+      border: 2px solid #fff;
+      -webkit-box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.56);
+-moz-box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.56);
+box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.56);
+    }
+    }
   }
 
   .heateor_sss_sharing_container.heateor_sss_horizontal_sharing {
@@ -164,11 +389,13 @@ background: linear-gradient(280deg, rgba(32,210,202,1) 0%, rgba(20,185,33,1) 35%
 /* --------------------------- gallery lightbox plugin ---------------------------------- */
 
 @media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
   // .wp-block-gallery {margin-left:-65px;margin-right:-130px;}
-    .wp-block-gallery {margin-left:-65px;margin-right:-130px;}
+    // .wp-block-gallery {margin-left:-65px;margin-right:-130px;}
+    .wp-block-gallery {        margin-left: calc(25% - 25vw);
+    margin-right: calc(25% - 25vw);
+    width: auto;
+    max-width: 1000%;}
+
 
 
 }

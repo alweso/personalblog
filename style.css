@@ -31,9 +31,19 @@ Text Domain: pascarubuddy
     max-width: 1140px;
   }
 }
+@media (min-width: 1300px) {
+  .container {
+    max-width: 1240px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1340px;
+  }
+}
 @media (min-width: 1600px) {
   .container {
-    max-width: 1400px;
+    max-width: 1540px;
   }
 }
 /* ---------------------------------- variables ------------------------------------- */
@@ -62,6 +72,7 @@ h3 {
 h4 {
   font-size: 1.625em;
   font-family: "Oswald";
+  margin-bottom: 20px;
 }
 
 h5 {
@@ -100,19 +111,151 @@ blockquote:before {
 }
 
 input[type=search], input[type=text], input[type=password], textarea {
+  box-sizing: border-box;
   border: 1px solid #b6b6b6;
   border-radius: 2px;
   box-shadow: none;
+  height: 37px;
+  padding-left: 10px;
 }
 
 button, input[type=submit], input[type=reset] {
+  box-sizing: border-box;
   background: #58a89d;
   color: #fff;
   border: none;
   border-radius: 2px;
-  padding: 8px 21px;
+  height: 37px;
+  padding: 0 21px;
 }
 
+button.light, input[type=submit].light, input[type=reset].light {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button:before {
+  content: "";
+  display: block;
+  background: white;
+  height: 150px;
+  width: 150px;
+  left: -150px;
+  top: -200px;
+  position: absolute;
+  transform: scale(1);
+  border-radius: 100%;
+}
+
+button:hover:before {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(4);
+  transition: transform 0.3s ease-out;
+}
+
+/* ------------------------------------- search form in menu ------------------------------- */
+.search-form {
+  position: relative;
+  width: 230px;
+}
+.search-form label {
+  margin-bottom: 0;
+}
+.search-form button {
+  position: absolute;
+  right: 30px;
+  z-index: 1;
+  color: #58a89d;
+  background: transparent;
+}
+
+/* -------------------------------- table design -------------------------------------------- */
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
 /* ------------------------------- Elementor --------------------------------- */
 .elementor-widget-heading .elementor-heading-title {
   font-family: Oswald !important;
@@ -120,13 +263,22 @@ button, input[type=submit], input[type=reset] {
 }
 
 /* ------------------------------ main menu ------------------------------- */
-.navbar {
-  border-bottom: 1px solid #e6e6e6;
-  background: #fff;
+.main-header {
+  background: #142f56;
+  position: relative;
+  z-index: 1;
 }
-.navbar a.navlink {
+.main-header a.nav-link {
   font-weight: 300;
   color: #58a89d;
+}
+.main-header .custom-logo-link {
+  height: 37px;
+  margin-right: 30px;
+}
+.main-header .custom-logo-link img {
+  height: 100%;
+  width: auto;
 }
 
 .alignright {
@@ -143,39 +295,88 @@ button, input[type=submit], input[type=reset] {
 
 /* ------------------- author avatar ------------------------------- */
 /* -------------------- blog, archives, categories, tags etc ---------------- */
-.archive, .blog {
-  background: #e6e6e6;
+/* -------------------------categories ------------------------------- */
+.categories ul li a {
+  color: #5f5f5f;
 }
-
-.blog .post, .archive .post {
-  height: 430px;
-  background: #fff;
-  margin-bottom: 20px;
+.categories ul li:after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-bottom: 2px;
+  margin-left: 19px;
+  background: #58a89d;
 }
-
-.archive .post.type-post header > a, .blog .post.type-post header > a {
-  display: block;
-  height: 145px;
-  overflow: hidden;
+.categories ul li:first-of-type:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-bottom: 2px;
+  margin-right: 19px;
+  background: #58a89d;
 }
-
-.blog .post.format-quote, .archive .post.format-quote {
-  background: #20d2ca;
-  background: linear-gradient(280deg, #20d2ca 0%, #14b921 35%, #00d4ff 100%);
-  color: #fff;
+.categories--on-dark ul li a {
+  color: white;
 }
 
 /* -------------------- single post styling --------------------------- */
+.post-template-single-full-screen-top-image .main-header, .post-template-single-full-width-top-image .main-header {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.post-template-single-full-screen-top-image .main-header .navbar, .post-template-single-full-width-top-image .main-header .navbar {
+  background: transparent !important;
+}
+.post-template-single-full-screen-top-image .main-header a.nav-link, .post-template-single-full-width-top-image .main-header a.nav-link {
+  font-weight: 400;
+  color: #fff !important;
+}
+.post-template-single-full-screen-top-image .header-wrap, .post-template-single-full-width-top-image .header-wrap {
+  margin-top: -54px;
+  background-attachment: fixed !important;
+}
+.post-template-single-full-screen-top-image .header-wrap .dark-background, .post-template-single-full-width-top-image .header-wrap .dark-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: table;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.99+0,0.4+100;Neutral+Density */
+  background: -moz-linear-gradient(top, rgba(61, 64, 74, 0.85) 0%, rgba(61, 64, 74, 0.6) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(61, 64, 74, 0.85) 0%, rgba(61, 64, 74, 0.6) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(61, 64, 74, 0.85) 0%, rgba(61, 64, 74, 0.6) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#fc000000", endColorstr="#66000000",GradientType=0 );
+  /* IE6-9 */
+}
+
+.post-template-default .entry-title {
+  border-left: 5px solid #58a89d;
+  padding-left: 29px;
+  margin-top: 20px;
+  font-size: 36px;
+}
+.post-template-default .post-container {
+  background: #fff;
+  padding-top: 35px;
+}
+
 .single-post .post-container {
-  margin-top: 40px;
+  margin-top: 20px;
+}
+.single-post .post-container img {
+  max-width: 100%;
+  height: auto;
 }
 .single-post .entry-header .wp-post-image {
   margin-bottom: 15px;
   width: 100%;
-  height: auto;
-}
-.single-post img {
-  max-width: 100%;
   height: auto;
 }
 .single-post .post-categories {
@@ -199,6 +400,22 @@ button, input[type=submit], input[type=reset] {
   /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
+.single-post .author-and-date--on-transparent {
+  border: none;
+  color: #fff;
+}
+.single-post .author-and-date--on-transparent a {
+  color: #fff;
+  font-weight: bold;
+}
+.single-post .author-and-date--on-transparent img {
+  border-radius: 100%;
+  margin-right: 10px;
+  border: 2px solid #fff;
+  -webkit-box-shadow: 10px 9px 5px -6px rgba(0, 0, 0, 0.56);
+  -moz-box-shadow: 10px 9px 5px -6px rgba(0, 0, 0, 0.56);
+  box-shadow: 10px 9px 5px -6px rgba(0, 0, 0, 0.56);
+}
 .single-post .heateor_sss_sharing_container.heateor_sss_horizontal_sharing {
   margin-bottom: 35px;
   border-top: 1px solid #b6b6b6;
@@ -213,13 +430,11 @@ button, input[type=submit], input[type=reset] {
 
 /* --------------------------- gallery lightbox plugin ---------------------------------- */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-
   .wp-block-gallery {
-    margin-left: -65px;
-    margin-right: -130px;
+    margin-left: calc(25% - 25vw);
+    margin-right: calc(25% - 25vw);
+    width: auto;
+    max-width: 1000%;
   }
 }
 /* --------------------------- widgets --------------------------------------- */

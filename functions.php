@@ -11,6 +11,11 @@ function bootstrapstarter_enqueue_scripts() {
     wp_enqueue_script('bootstrap', get_template_directory_uri().'/bootstrap/js/bootstrap.min.js', $dependencies, '3.3.6', true );
 }
 
+function my_theme_scripts() {
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '1.0.0', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_scripts' );
 
@@ -57,6 +62,15 @@ add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', '
 add_theme_support( 'post-thumbnails', array( 'post', 'page' ) ); // Posts and Pages
 add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+add_theme_support(
+            'custom-logo',
+            array(
+                'height'      => 100,
+                'width'       => 200,
+                'flex-width'  => true,
+                'flex-height' => true,
+            )
+        );
 
 if ( ! isset( $content_width ) ) $content_width = 1300;
 
