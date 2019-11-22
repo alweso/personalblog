@@ -25,7 +25,7 @@
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="feature-image">
-			<?php the_post_thumbnail('post-thumbnail', ['class' => 'img-fluid', 'title' => 'Feature image']); ?>
+			<?php the_post_thumbnail('landscape-post-image', ['class' => 'img-fluid', 'title' => 'Feature image']); ?>
 		</a>
 	<?php endif; ?>
 

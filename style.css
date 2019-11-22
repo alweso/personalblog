@@ -110,7 +110,7 @@ blockquote:before {
   left: 0;
 }
 
-input[type=search], input[type=text], input[type=password], textarea {
+input[type=search], input[type=text], input[type=password], textarea, select, option {
   box-sizing: border-box;
   border: 1px solid #b6b6b6;
   border-radius: 2px;
@@ -264,13 +264,13 @@ table th {
 
 /* ------------------------------ main menu ------------------------------- */
 .main-header {
-  background: #142f56;
+  background: #2f6b71;
   position: relative;
   z-index: 1;
 }
 .main-header a.nav-link {
   font-weight: 300;
-  color: #58a89d;
+  color: white;
 }
 .main-header .custom-logo-link {
   height: 37px;
@@ -295,6 +295,83 @@ table th {
 
 /* ------------------- author avatar ------------------------------- */
 /* -------------------- blog, archives, categories, tags etc ---------------- */
+.blog .post, .archive .post {
+  height: 490px;
+  background: #fff;
+  margin-bottom: 28px;
+  padding-bottom: 35px;
+}
+
+.archive .post.type-post header > a, .blog .post.type-post header > a {
+  display: block;
+}
+
+.blog .post h4 a, .archive .post h4 a {
+  color: black;
+  font-size: 20px;
+}
+
+.blog .post h4, .archive .post h4 {
+  line-height: 23px;
+  margin-bottom: 10px;
+}
+
+.blog .post ul.post-categories, .archive .post ul.post-categories {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 11px;
+  margin-top: 15px;
+}
+.blog .post ul.post-categories li, .archive .post ul.post-categories li {
+  display: inline-block;
+}
+.blog .post ul.post-categories li a, .archive .post ul.post-categories li a {
+  color: white;
+  background: #58a89d;
+  padding: 3px 10px;
+  font-size: 12px;
+}
+
+.blog .entry-content, .archive .entry-content {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 13px;
+}
+
+/* another type of blog */
+/* ------------------------------- author and date block ------------------------- */
+.author-and-date {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 20px;
+  font-size: 0.85em;
+}
+.author-and-date img {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+.author-and-date--type2 {
+  border: none;
+}
+.author-and-date--on-transparent {
+  border: none;
+  color: #fff;
+}
+.author-and-date--on-transparent a {
+  color: #fff;
+  font-weight: bold;
+}
+.author-and-date--on-transparent img {
+  border-radius: 100%;
+  margin-right: 10px;
+  border: 2px solid #fff;
+  -webkit-box-shadow: 10px 9px 5px -6px rgba(0, 0, 0, 0.56);
+  -moz-box-shadow: 10px 9px 5px -6px rgba(0, 0, 0, 0.56);
+  box-shadow: 10px 9px 5px -6px rgba(0, 0, 0, 0.56);
+}
+
 /* -------------------------categories ------------------------------- */
 .categories ul li a {
   color: #5f5f5f;
@@ -519,6 +596,35 @@ table th {
 /* ------------------------------- Wordpress elements ---------------------------------------- */
 .entry-title {
   margin-bottom: 20px;
+}
+
+/* --------------------------------------- site footer ------------------------------------------------- */
+footer.site-footer {
+  min-height: 300px;
+  padding-top: 50px;
+  background: #294e51;
+}
+footer.site-footer h4, footer.site-footer a {
+  color: white;
+}
+
+/* =======================================================================================================
+==========================================================================================================
+==========================================================================================================
+=========================================== BRAND NEW BEAUTIFUL CODE =====================================
+==========================================================================================================
+==========================================================================================================
+======================================================================================================== */
+/* ================================ POST FORMATS ON ARCHIVE PAGE ======================================== */
+.post.format-standard h4.no-image {
+  line-height: 45px;
+}
+.post.format-standard h4.no-image a {
+  font-size: 40px;
+}
+
+.post.format-gallery h4 a, .post.format-gallery .excerpt {
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */

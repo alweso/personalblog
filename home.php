@@ -1,4 +1,13 @@
-<?php get_header(); ?>
+<?php 
+/**
+* Template Name: Blog - background posts
+* Template Post Type: page
+* @package WordPress
+* @subpackage pascarubuddy
+* @since pascarubuddy 1.0
+*/
+
+get_header(); ?>
 <div class="container">
 <div class="row">
 <div class="col-sm-12 blog-main">
@@ -6,6 +15,32 @@
 		<?php
 		the_archive_title( '<h1 class="page-title">', '</h1>' );
 		?>
+		<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
+	<?php
+		if( $terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => 'name' ) ) ) : 
+ 
+			echo '<select name="categoryfilter"><option value="">Select category...</option>';
+			foreach ( $terms as $term ) :
+				echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as the value of an option
+			endforeach;
+			echo '</select>';
+		endif;
+	?>
+	<input type="text" name="price_min" placeholder="Min price" />
+	<input type="text" name="price_max" placeholder="Max price" />
+	<label>
+		<input type="radio" name="date" value="ASC" /> Date: Ascending
+	</label>
+	<label>
+		<input type="radio" name="date" value="DESC" selected="selected" /> Date: Descending
+	</label>
+	<label>
+		<input type="checkbox" name="featured_image" /> Only posts with featured images
+	</label>
+	<button>Apply filter</button>
+	<input type="hidden" name="action" value="myfilter">
+</form>
+<div id="response"></div>
 	</header><!-- .page-header -->
 	<?php if ( have_posts() ) : ?>
 		<div class="row">
@@ -13,7 +48,7 @@
 			while ( have_posts() ) :
 				the_post();
 				?>
-				<div class="col-xs-12 col-sm-3">
+				<div class="col-xs-12 col-sm-4">
 					<?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
 				</div>
 				<?php
