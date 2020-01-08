@@ -1,7 +1,13 @@
+<?php
+/**
+* Template Name: page template
+*/
+
+?>
 <?php get_header(); ?>
 <div class="container">
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
 
   <!--     <?php
       the_content();

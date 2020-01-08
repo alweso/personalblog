@@ -293,58 +293,10 @@ table th {
   margin-bottom: 10px;
 }
 
-/* ------------------- author avatar ------------------------------- */
-/* -------------------- blog, archives, categories, tags etc ---------------- */
-.blog .post, .archive .post {
-  height: 490px;
-  background: #fff;
-  margin-bottom: 28px;
-  padding-bottom: 35px;
-}
-
-.archive .post.type-post header > a, .blog .post.type-post header > a {
-  display: block;
-}
-
-.blog .post h4 a, .archive .post h4 a {
-  color: black;
-  font-size: 20px;
-}
-
-.blog .post h4, .archive .post h4 {
-  line-height: 23px;
-  margin-bottom: 10px;
-}
-
-.blog .post ul.post-categories, .archive .post ul.post-categories {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 11px;
-  margin-top: 15px;
-}
-.blog .post ul.post-categories li, .archive .post ul.post-categories li {
-  display: inline-block;
-}
-.blog .post ul.post-categories li a, .archive .post ul.post-categories li a {
-  color: white;
-  background: #58a89d;
-  padding: 3px 10px;
-  font-size: 12px;
-}
-
-.blog .entry-content, .archive .entry-content {
-  color: #999;
-  font-size: 14px;
-  margin-bottom: 13px;
-}
-
-/* another type of blog */
 /* ------------------------------- author and date block ------------------------- */
 .author-and-date {
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 20px;
   font-size: 0.85em;
 }
 .author-and-date img {
@@ -625,6 +577,73 @@ footer.site-footer h4, footer.site-footer a {
 
 .post.format-gallery h4 a, .post.format-gallery .excerpt {
   color: white;
+}
+
+.post.format-quote {
+  padding: 30px 40px 30px 30px;
+  background: #b2dad33d;
+}
+.post.format-quote blockquote {
+  font-size: 20px;
+  line-height: 25px;
+}
+.post.format-quote--with-image {
+  height: 100%;
+}
+.post.format-quote--with-image header {
+  padding: 30px;
+}
+.post.format-quote--with-image blockquote {
+  color: white;
+}
+.post.format-quote--with-image .author-and-date {
+  color: white;
+}
+.post.format-quote--no-image {
+  position: relative;
+  background-size: cover;
+  width: 100%;
+}
+
+.blog .post, .archive .post {
+  padding-bottom: 35px;
+}
+
+.archive .post.type-post header > a, .blog .post.type-post header > a {
+  display: block;
+}
+
+.blog .post h4 a, .archive .post h4 a {
+  color: black;
+  font-size: 20px;
+}
+
+.blog .post h4, .archive .post h4 {
+  line-height: 23px;
+  margin-bottom: 10px;
+}
+
+.blog .post ul.post-categories, .archive .post ul.post-categories {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 11px;
+  margin-top: 15px;
+}
+.blog .post ul.post-categories li, .archive .post ul.post-categories li {
+  display: inline-block;
+}
+.blog .post ul.post-categories li a, .archive .post ul.post-categories li a {
+  color: white;
+  background: #58a89d;
+  padding: 3px 10px;
+  font-size: 12px;
+}
+
+.blog .entry-content, .archive .entry-content {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 13px;
 }
 
 /*# sourceMappingURL=style.css.map */

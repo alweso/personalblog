@@ -8,15 +8,7 @@
 		the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h4>' );
 		?>
 		<?php the_category() ?>
-		<div class="author-and-date d-flex">
-			<!-- <a href="#" class="author-avatar">
-				<?php echo get_avatar( get_the_author_meta( 'ID' )); ?>
-			</a> -->
-			<div>
-				<p>by <?php the_author(); ?></p>
-				<?php the_date( 'F j, Y' ); ?> 
-			</div>
-		</div>
+			<?php get_template_part( 'template-parts/archive-post/author-comments-date', 'none' ); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

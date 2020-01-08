@@ -221,7 +221,7 @@ function wpdocs_theme_setup() {
     // Add featured image sizes
     add_image_size( 'hero', 2880, 1500 ); 
     add_image_size( 'landscape-post-image', 1200, 900 ); 
-    add_image_size( 'featured-small', 700, 520, true ); // width, height, crop
+    add_image_size( 'featured-small', 700, 460, true, true ); // width, height, crop
     add_image_size( 'featured-gallery',600, 400, true ); // width, height, crop
     // add_image_size( 'featured-small', 320, 147, true ); // width, height, crop
 
@@ -240,5 +240,13 @@ function wpdocs_theme_setup() {
         ) );
     }
 }
+
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+function wpdocs_theme_add_editor_styles() {
+    add_editor_style( 'style.css' );
+}
+add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
 
 ?>
