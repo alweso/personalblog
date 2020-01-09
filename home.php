@@ -15,33 +15,30 @@ get_header(); ?>
 		<?php
 		the_archive_title( '<h1 class="page-title mt-4 mb-4">', '</h1>' );
 		?> home.php
-		<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" style="margin-bottom: 25px">
-	<?php
-		if( $terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => 'name' ) ) ) : 
+		<form id="misha_filters" action="#">
+	<label for="misha_number_of_results">Per page</label>
+	<select name="misha_number_of_results" id="misha_number_of_results">
+		<option><?php echo get_option( 'posts_per_page' ) ?></option><!-- it is from Settings > Reading -->
+		<option>5</option>
+		<option>10</option>
+		<option value="-1">All</option>
+	</select>
  
-			echo '<select name="categoryfilter"><option value="" style="margin-right: 20px">Select category...</option>';
-			foreach ( $terms as $term ) :
-				echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as the value of an option
-			endforeach;
-			echo '</select>';
-		endif;
-	?>
-<!-- 	<label style="margin-right: 20px">
-		<input type="radio" name="date" value="ASC"/> Date: Ascending
-	</label>
-	<label style="margin-right: 20px">
-		<input type="radio" name="date" value="DESC" selected="selected" /> Date: Descending
-	</label>
-	<label style="margin-right: 20px">
-		<input type="checkbox" name="featured_image" /> Only posts with featured images
-	</label> -->
-	<button>Apply filter</button>
-	<input type="hidden" name="action" value="myfilter">
+	<label for="misha_order_by">Order</label>
+	<select name="misha_order_by" id="misha_order_by">
+		<option value="date-DESC">Date ↓</option><!-- I will explode these values by "-" symbol later -->
+		<option value="date-ASC">Date ↑</option>
+		<option value="comment_count-DESC">Comments ↓</option>
+		<option value="comment_count-ASC">Comments ↑</option>
+	</select>
+ 
+	<!-- required hidden field for admin-ajax.php -->
+	<input type="hidden" name="action" value="mishafilter" />
 </form>
 <div id="response"></div>
 	</header><!-- .page-header -->
 	<?php if ( have_posts() ) : ?>
-		<div class="row allposts row-eq-height">
+		<div id="initial-posts" class="row allposts row-eq-height">
 			<?php
 			while ( have_posts() ) :
 				the_post();
@@ -60,14 +57,13 @@ get_header(); ?>
 	endif;
 	?>
 <!-- 	<h2><?php the_posts_pagination(); ?>dsfdasfdsafdsafsa</h2>  -->
-
+<div id="misha_posts_wrap" class="row">
+	<!-- Posts will be here -->
+</div>
 	<?php
-global $wp_query; // you can remove this line if everything works for you
- 
-// don't display the button if there are not enough posts
-if (  $wp_query->max_num_pages > 1 )
-	echo '<div class="misha_loadmore">More posts</div>'; // you can use <a> as well
-?>
+if (  $wp_query->max_num_pages > 1 ) :
+	echo '<div id="misha_loadmore">More posts</div>'; // you can use <a> as well
+endif;?>
 
 </div><!-- /.blog-main -->
 <!-- <?php get_sidebar(); ?> -->
