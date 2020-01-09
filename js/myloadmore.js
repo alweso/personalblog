@@ -1,14 +1,14 @@
 jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" error
-	jQuery('.misha_loadmore').click(function(){
+	$('.misha_loadmore').click(function(){
  
-		var button = jQuery(this),
+		var button = $(this),
 		    data = {
 			'action': 'loadmore',
 			'query': misha_loadmore_params.posts, // that's how we get params from wp_localize_script() function
 			'page' : misha_loadmore_params.current_page
 		};
  
-		jQuery.ajax({ // you can also use $.post here
+		$.ajax({ // you can also use $.post here
 			url : misha_loadmore_params.ajaxurl, // AJAX handler
 			data : data,
 			type : 'POST',
@@ -17,7 +17,9 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 			},
 			success : function( data ){
 				if( data ) { 
-					button.text( 'More posts' ).prev().before(data); // insert new posts
+					// button.text( 'More posts' ).prev().after(data); // insert new posts
+										button.text( 'More posts' ).prev().append(data); // insert new posts
+
 					misha_loadmore_params.current_page++;
  
 					if ( misha_loadmore_params.current_page == misha_loadmore_params.max_page ) 
