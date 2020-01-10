@@ -32,30 +32,25 @@ get_header(); ?>
 		<option value="comment_count-ASC">Comments ↑</option>
 	</select>
  
+ <?php
+ if( $terms = get_terms( array(
+    'taxonomy' => 'category', // to make it simple I use default categories
+    'orderby' => 'name'
+) ) ) : 
+	// if categories exist, display the dropdown
+	echo '<select name="categoryfilter"><option value="">Select category...</option>';
+	foreach ( $terms as $term ) :
+		echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as an option value
+	endforeach;
+	echo '</select>';
+endif;
+?>
 	<!-- required hidden field for admin-ajax.php -->
 	<input type="hidden" name="action" value="mishafilter" />
 </form>
 <div id="response"></div>
 	</header><!-- .page-header -->
-	<?php if ( have_posts() ) : ?>
-		<div id="initial-posts" class="row allposts row-eq-height">
-			<?php
-			while ( have_posts() ) :
-				the_post();
-				?>
-				<div class="col-xs-12 col-sm-4">
-					<?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
-				</div>
-				<?php
-// End the loop.
-			endwhile;
-			?>
-		</div>
-		<?php
-	else :
-		get_template_part( 'template-parts/archive-post/content', 'none' ); 
-	endif;
-	?>
+	
 <!-- 	<h2><?php the_posts_pagination(); ?>dsfdasfdsafdsafsa</h2>  -->
 <div id="misha_posts_wrap" class="row">
 	<!-- Posts will be here -->

@@ -3,6 +3,37 @@ jQuery(function($){
 	/*
 	 * Load More
 	 */
+
+	 $('document').ready(function(){
+ 
+		$.ajax({
+			url : misha_loadmore_params.ajaxurl, // AJAX handler
+			data : {
+				'action': 'loadmorebutton', // the parameter for admin-ajax.php
+				'query': misha_loadmore_params.posts, // loop parameters passed by wp_localize_script()
+				'page' : misha_loadmore_params.current_page // current page
+			},
+			type : 'POST',
+			beforeSend : function ( xhr ) {
+				$('#misha_loadmore').text('Loading...'); // some type of preloader
+			},
+			success : function( posts ){
+				if( posts ) {
+					$("#initial-posts").remove();
+					$('#misha_loadmore').text( 'More posts' );
+					$('#misha_posts_wrap').append( posts ); // insert new posts
+					misha_loadmore_params.current_page++;
+ 
+					if ( misha_loadmore_params.current_page == misha_loadmore_params.max_page ) 
+						$('#misha_loadmore').hide(); // if last page, HIDE the button
+ 
+				} else {
+					$('#misha_loadmore').hide(); // if no data, HIDE the button as well
+				}
+			}
+		});
+		return false;
+	});
 	$('#misha_loadmore').click(function(){
  
 		$.ajax({
@@ -56,6 +87,9 @@ jQuery(function($){
 				// set the new query parameters
 				misha_loadmore_params.posts = data.posts;
  
+				// set the new max page parameter
+				misha_loadmore_params.max_page = data.max_page;
+
 				// set the new max page parameter
 				misha_loadmore_params.max_page = data.max_page;
  
