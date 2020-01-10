@@ -222,8 +222,8 @@ function misha_script_and_styles() {
     wp_enqueue_script( 'misha_scripts' );
 }
 
-add_action('wp_ajax_loadmorebutton', 'misha_loadmore_ajax_handler');
-add_action('wp_ajax_nopriv_loadmorebutton', 'misha_loadmore_ajax_handler');
+add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler');
+add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler');
  
 function misha_loadmore_ajax_handler(){
  
@@ -265,10 +265,18 @@ function misha_filter_function(){
     $order = explode( '-', $_POST['misha_order_by'] );
  
     $params = array(
-        'posts_per_page' => $_POST['misha_number_of_results'], // when set to -1, it shows all posts
         'orderby' => $order[0], // example: date
         'order' => $order[1] // example: ASC
     );
+
+    if( isset( $_POST['categoryfilter'] ) )
+        $params['tax_query'] = array(
+            array(
+                'taxonomy' => 'category',
+                'field' => 'id',
+                'terms' => $_POST['categoryfilter']
+            )
+        );
  
  
     query_posts( $params );
