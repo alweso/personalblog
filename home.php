@@ -36,7 +36,7 @@ get_header(); ?>
 </div>
 	<?php
 if (  $wp_query->max_num_pages > 1 ) :
-	echo '<div id="misha_loadmore">More posts</div>'; // you can use <a> as well
+	echo '<div class="loader-wrap"><div id="misha_loadmore" class="loader"></div></div>'; // you can use <a> as well
 endif;?>
 
 </div><!-- /.blog-main -->
