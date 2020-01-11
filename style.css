@@ -724,5 +724,18 @@ footer.site-footer h4, footer.site-footer a {
     height: 5em;
   }
 }
+/* ------------------------------------------- secondary (category) menu ------------------------------ */
+.category-menu {
+  background: #58a89d;
+}
+.category-menu .navbar-nav {
+  display: inline-block;
+}
+.category-menu .navbar-nav li {
+  display: inline-block;
+}
+.category-menu .navbar-nav li a {
+  color: #fff;
+}
 
 /*# sourceMappingURL=style.css.map */

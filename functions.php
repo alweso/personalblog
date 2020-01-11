@@ -326,7 +326,7 @@ function misha_script_and_styles() {
         'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
         'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
         'current_page' => $wp_query->query_vars['paged'] ? $wp_query->query_vars['paged'] : 1,
-        'max_page' => $wp_query->max_num_pages
+        'max_page' => $wp_query->max_num_pages ? $wp_query->max_num_pages : 10
     ) );
  
     wp_enqueue_script( 'misha_scripts' );
@@ -415,7 +415,7 @@ function misha_filter_function(){
  
     echo json_encode( array(
         'posts' => json_encode( $wp_query->query_vars ),
-        'max_page' => $wp_query->max_num_pages,
+        'max_page' => $wp_query->max_num_pages ? $wp_query->max_num_pages : 10,
         'found_posts' => $wp_query->found_posts,
         'content' => $posts_html
     ) );

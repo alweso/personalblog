@@ -13,6 +13,7 @@ jQuery(function($){
 				url : misha_loadmore_params.ajaxurl,
 				data:data,
 				type:'POST',
+				dataType : 'json',
 				beforeSend: function( xhr ){
 					// you can also add your own preloader here
 					// you see, the AJAX call is in process, we shouldn't run it again until complete
@@ -42,12 +43,23 @@ jQuery(function($){
 			});
 	}
 
+	$(window).load(function(){
+		var data = {
+			'action': 'loadmore',
+			'query': misha_loadmore_params.posts,
+			'page' : misha_loadmore_params.current_page
+		};
+		console.log(data);
+		loadMorePosts(data);
+	});
+
+
  
 	$(window).scroll(function(){
 		var data = {
 			'action': 'loadmore',
 			'query': misha_loadmore_params.posts,
-			'page' : misha_loadmore_params.current_page
+			'page' : misha_loadmore_params.current_page,
 		};
 		if( $(document).scrollTop() > ( $(document).height() - bottomOffset ) && canBeLoaded == true ){
 			$('#misha_loadmore').show();
@@ -58,51 +70,51 @@ jQuery(function($){
 	/*
 	 * Filter
 	 */
-	//  var filteredData;
-	// $('#misha_filters').change(function(){
- // 			filteredData = $('#misha_filters').serialize();
- // 			// loadMorePosts(filteredData);
-	// 	$.ajax({
-	// 		url : misha_loadmore_params.ajaxurl,
-	// 		data : $('#misha_filters').serialize(), // form data
-	// 		dataType : 'json', // this data type allows us to receive objects from the server
-	// 		type : 'POST',
-	// 		beforeSend : function(xhr){
-	// 			$('#misha_filters').find('button').text('Filtering...');
-	// 			canBeLoaded = false;
-	// 		},
-	// 		success : function( data ){
-	// 			console.log(data);
-	// 			// when filter applied:
-	// 			// set the current page to 1
-	// 			misha_loadmore_params.current_page = 1;
+	 var filteredData;
+	$('#misha_filters').change(function(){
+ 			filteredData = $('#misha_filters').serialize();
+ 			// loadMorePosts(filteredData);
+		$.ajax({
+			url : misha_loadmore_params.ajaxurl,
+			data : $('#misha_filters').serialize(), // form data
+			dataType : 'json', // this data type allows us to receive objects from the server
+			type : 'POST',
+			beforeSend : function(xhr){
+				$('#misha_filters').find('button').text('Filtering...');
+				canBeLoaded = false;
+			},
+			success : function( data ){
+				console.log(data);
+				// when filter applied:
+				// set the current page to 1
+				misha_loadmore_params.current_page = 1;
  
-	// 			// set the new query parameters
-	// 			misha_loadmore_params.posts = data.posts;
+				// set the new query parameters
+				misha_loadmore_params.posts = data.posts;
  
-	// 			// set the new max page parameter
-	// 			misha_loadmore_params.max_page = data.max_page;
+				// set the new max page parameter
+				misha_loadmore_params.max_page = data.max_page;
 
-	// 			console.log("max page is " + data.max_page);
+				console.log("max page is " + data.max_page);
  
-	// 			// insert the posts to the container
-	// 			$('#misha_posts_wrap').html(data.content);
- // // canBeLoaded = true;
-	// 			// hide load more button, if there are not enough posts for the second page
-	// 			if ( data.max_page < 2 ) {
-	// 				$('#misha_loadmore').hide();
-	// 			} else {
-	// 				$('#misha_loadmore').show();
-	// 				canBeLoaded = true;
-	// 				misha_loadmore_params.current_page++;
-	// 			}
+				// insert the posts to the container
+				$('#misha_posts_wrap').html(data.content);
+ // canBeLoaded = true;
+				// hide load more button, if there are not enough posts for the second page
+				if ( data.max_page < 2 ) {
+					$('#misha_loadmore').hide();
+				} else {
+					$('#misha_loadmore').show();
+					canBeLoaded = true;
+					misha_loadmore_params.current_page++;
+				}
 
-	// 		}
-	// 	});
+			}
+		});
  
-	// 	// do not submit the form
-	// 	return false;
+		// do not submit the form
+		return false;
  
-	// });
+	});
  
 });

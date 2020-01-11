@@ -64,7 +64,7 @@
                         'theme_location'    => 'secondary',
                         'depth'             => 2,
                         'container'         => 'div',
-                        'container_class'   => '',
+                        'container_class'   => 'category-menu',
                         'container_id'      => 'navbarSupportedContent',
                         'menu_class'        => 'navbar-nav mr-auto',
                         'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',

@@ -643,3 +643,18 @@ font-size: 12px;}
     height: 5em;
   }
 }
+
+/* ------------------------------------------- secondary (category) menu ------------------------------ */
+
+.category-menu {
+  background: $base-color;
+  .navbar-nav {
+    display: inline-block;
+    li {
+      display: inline-block;
+      a {
+        color:#fff;
+      }
+    }
+  }
+}
