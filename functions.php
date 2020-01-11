@@ -103,6 +103,9 @@ require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 register_nav_menus( array(
 	'primary' => __( 'Primary Menu', 'pascarubuddy' ),
 ) );
+register_nav_menus( array(
+    'secondary' => __( 'Secondary Menu', 'pascarubuddy' ),
+) );
 // require_once('bootstrap-navwalker/class-wp-bootstrap-navwalker.php');
 
 
@@ -201,118 +204,111 @@ function wpdocs_theme_add_editor_styles() {
 }
 add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
 
-add_action( 'wp_enqueue_scripts', 'misha_script_and_styles');
+add_action( 'wp_enqueue_scripts', 'site_scripts' );
  
-function misha_script_and_styles() {
-    // absolutely need it, because we will get $wp_query->query_vars and $wp_query->max_num_pages from it.
-    global $wp_query;
- 
-    // when you use wp_localize_script(), do not enqueue the target script immediately
-    wp_register_script( 'misha_scripts', get_stylesheet_directory_uri() . '/js/script.js', array('jquery') );
- 
-    // passing parameters here
-    // actually the <script> tag will be created and the object "misha_loadmore_params" will be inside it 
-    wp_localize_script( 'misha_scripts', 'misha_loadmore_params', array(
-        'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
-        'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
-        'current_page' => $wp_query->query_vars['paged'] ? $wp_query->query_vars['paged'] : 1,
-        'max_page' => $wp_query->max_num_pages
-    ) );
- 
-    wp_enqueue_script( 'misha_scripts' );
+function site_scripts() {
+    wp_enqueue_script('masonry');
+    wp_enqueue_script( 'site-script', get_template_directory_uri() . '/js/site-script.js', array(), false, true );
 }
 
-add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler');
-add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler');
- 
-function misha_loadmore_ajax_handler(){
- 
-    // prepare our arguments for the query
-    $params = json_decode( stripslashes( $_POST['query'] ), true ); // query_posts() takes care of the necessary sanitization 
-    $params['paged'] = $_POST['page'] + 1; // we need next page to be loaded
-    $params['post_status'] = 'publish';
- 
-    // it is always better to use WP_Query but not here
-    query_posts( $params );
- 
-    if( have_posts() ) :
- 
-        // run the loop
-        while( have_posts() ): the_post();
- 
-            // look into your theme code how the posts are inserted, but you can use your own HTML of course
-            // do you remember? - my example is adapted for Twenty Seventeen theme?>
-            <div class="col-xs-12 col-sm-4">
-                    <?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
-                </div><?php
-            // for the test purposes comment the line above and uncomment the below one
-            // the_title();
- 
- 
-        endwhile;
-    endif;
-    die; // here we exit the script and even no wp_reset_query() required!
+function dimox_breadcrumbs() {
+  
+  $delimiter = '&raquo;';
+  $name = 'Home'; //text for the 'Home' link
+  $currentBefore = '<span class="current">';
+  $currentAfter = '</span>';
+  
+  if ( !is_home() && !is_front_page() || is_paged() ) {
+  
+    echo '<div id="crumbs">';
+  
+    global $post;
+    $home = get_bloginfo('url');
+    echo '<a href="' . $home . '">' . $name . '</a> ' . $delimiter . ' ';
+  
+    if ( is_category() ) {
+      global $wp_query;
+      $cat_obj = $wp_query->get_queried_object();
+      $thisCat = $cat_obj->term_id;
+      $thisCat = get_category($thisCat);
+      $parentCat = get_category($thisCat->parent);
+      if ($thisCat->parent != 0) echo(get_category_parents($parentCat, TRUE, ' ' . $delimiter . ' '));
+      echo $currentBefore . 'Archive by category &#39;';
+      single_cat_title();
+      echo '&#39;' . $currentAfter;
+  
+    } elseif ( is_day() ) {
+      echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
+      echo '<a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a> ' . $delimiter . ' ';
+      echo $currentBefore . get_the_time('d') . $currentAfter;
+  
+    } elseif ( is_month() ) {
+      echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
+      echo $currentBefore . get_the_time('F') . $currentAfter;
+  
+    } elseif ( is_year() ) {
+      echo $currentBefore . get_the_time('Y') . $currentAfter;
+  
+    } elseif ( is_single() && !is_attachment() ) {
+      $cat = get_the_category(); $cat = $cat[0];
+      echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
+      echo $currentBefore;
+      the_title();
+      echo $currentAfter;
+  
+    } elseif ( is_attachment() ) {
+      $parent = get_post($post->post_parent);
+      $cat = get_the_category($parent->ID); $cat = $cat[0];
+      echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
+      echo '<a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a> ' . $delimiter . ' ';
+      echo $currentBefore;
+      the_title();
+      echo $currentAfter;
+  
+    } elseif ( is_page() && !$post->post_parent ) {
+      echo $currentBefore;
+      the_title();
+      echo $currentAfter;
+  
+    } elseif ( is_page() && $post->post_parent ) {
+      $parent_id  = $post->post_parent;
+      $breadcrumbs = array();
+      while ($parent_id) {
+        $page = get_page($parent_id);
+        $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
+        $parent_id  = $page->post_parent;
+      }
+      $breadcrumbs = array_reverse($breadcrumbs);
+      foreach ($breadcrumbs as $crumb) echo $crumb . ' ' . $delimiter . ' ';
+      echo $currentBefore;
+      the_title();
+      echo $currentAfter;
+  
+    } elseif ( is_search() ) {
+      echo $currentBefore . 'Search results for &#39;' . get_search_query() . '&#39;' . $currentAfter;
+  
+    } elseif ( is_tag() ) {
+      echo $currentBefore . 'Posts tagged &#39;';
+      single_tag_title();
+      echo '&#39;' . $currentAfter;
+  
+    } elseif ( is_author() ) {
+       global $author;
+      $userdata = get_userdata($author);
+      echo $currentBefore . 'Articles posted by ' . $userdata->display_name . $currentAfter;
+  
+    } elseif ( is_404() ) {
+      echo $currentBefore . 'Error 404' . $currentAfter;
+    }
+  
+    if ( get_query_var('paged') ) {
+      if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
+      echo __('Page') . ' ' . get_query_var('paged');
+      if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
+    }
+  
+    echo '</div>';
+  
+  }
 }
- 
- 
- 
-add_action('wp_ajax_mishafilter', 'misha_filter_function'); 
-add_action('wp_ajax_nopriv_mishafilter', 'misha_filter_function');
- 
-function misha_filter_function(){
- 
-    // example: date-ASC 
-    $order = explode( '-', $_POST['misha_order_by'] );
- 
-    $params = array(
-        'orderby' => $order[0], // example: date
-        'order' => $order[1] // example: ASC
-    );
-
-    if( isset( $_POST['categoryfilter'] ) )
-        $params['tax_query'] = array(
-            array(
-                'taxonomy' => 'category',
-                'field' => 'id',
-                'terms' => $_POST['categoryfilter']
-            )
-        );
- 
- 
-    query_posts( $params );
- 
-    global $wp_query;
- 
-    if( have_posts() ) :
- 
-        ob_start(); // start buffering because we do not need to print the posts now
- 
-        while( have_posts() ): the_post();
- 
-            // adapted for Twenty Seventeen theme?>
-           <div class="col-xs-12 col-sm-4">
-                    <?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
-                </div>
-                <?php
- 
-        endwhile;
- 
-        $posts_html = ob_get_contents(); // we pass the posts to variable
-        ob_end_clean(); // clear the buffer
-    else:
-        $posts_html = '<p>Nothing found for your criteria.</p>';
-    endif;
- 
-    // no wp_reset_query() required
- 
-    echo json_encode( array(
-        'posts' => json_encode( $wp_query->query_vars ),
-        'max_page' => $wp_query->max_num_pages,
-        'found_posts' => $wp_query->found_posts,
-        'content' => $posts_html
-    ) );
- 
-    die();
-}
-
 ?>

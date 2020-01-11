@@ -1,6 +1,6 @@
 <?php 
 /**
-* Template Name: Blog - background posts
+* Template Name: Archive
 * Template Post Type: page
 * @package WordPress
 * @subpackage pascarubuddy
@@ -10,11 +10,11 @@
 get_header(); ?>
 <div class="container">
 <div class="row">
-<div class="col-sm-12 blog-main">
+<div class="col-sm-12 blog-masonry-3">
 	<header class="page-header">
 		<?php
 		the_archive_title( '<h1 class="page-title mt-4 mb-4">', '</h1>' );
-		?> archive.php
+		?> archive.php masonry style
 		<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" style="margin-bottom: 25px">
 	<?php
 		if( $terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => 'name' ) ) ) : 

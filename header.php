@@ -58,6 +58,20 @@
 
         </div>
     </div>
+    <div class="category-menu" style="background: grey">
+      <?php
+ wp_nav_menu( array(
+                        'theme_location'    => 'secondary',
+                        'depth'             => 2,
+                        'container'         => 'div',
+                        'container_class'   => '',
+                        'container_id'      => 'navbarSupportedContent',
+                        'menu_class'        => 'navbar-nav mr-auto',
+                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                        'walker'            => new WP_Bootstrap_Navwalker()
+                    ) );
+    ?>
+    </div>
 
 
 <!-- <div class="container">

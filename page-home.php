@@ -8,6 +8,21 @@
 */
 
 get_header(); ?>
+<!-- PARTICLE SYSTEM -->
+<div class="page-bg"></div>
+
+<div class="animation-wrapper">
+  <div class="particle particle-1"></div>
+  <div class="particle particle-2"></div>
+  <div class="particle particle-3"></div>
+  <div class="particle particle-4"></div>
+</div>
+
+<div class="page-wrapper"> 
+  <h1>CSS Particles</h1>
+</div>
+
+
 <div class="container">
 <div class="row">
     <div class="col-sm-8">
