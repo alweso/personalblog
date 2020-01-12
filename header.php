@@ -18,9 +18,6 @@
     <div class="main-header">
         <div>
         <!--  -->
-
-
-
             <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#">
       <?php the_custom_logo() ?>
