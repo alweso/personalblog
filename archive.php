@@ -1,56 +1,76 @@
-<?php get_header(); ?>
-<div class="col-sm-8 blog-main">
-				<header class="page-header">
-			<?php
-			the_archive_title( '<h1 class="page-title">', '</h1>' );
-			?>
-		</header><!-- .page-header -->
+<?php 
+/**
+* Template Name: Blog - background posts
+* Template Post Type: page
+* @package WordPress
+* @subpackage pascarubuddy
+* @since pascarubuddy 1.0
+*/
+
+get_header(); ?>
+<div class="container">
+<div class="row">
+<div class="col-sm-12 blog-main">
+	<header class="page-header">
+		<?php
+		the_archive_title( '<h1 class="page-title mt-4 mb-4">', '</h1>' );
+		?> archive.php
+		<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" style="margin-bottom: 25px">
+	<?php
+		if( $terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => 'name' ) ) ) : 
+ 
+			echo '<select name="categoryfilter"><option value="" style="margin-right: 20px">Select category...</option>';
+			foreach ( $terms as $term ) :
+				echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as the value of an option
+			endforeach;
+			echo '</select>';
+		endif;
+	?>
+	<label style="margin-right: 20px">
+		<input type="radio" name="date" value="ASC"/> Date: Ascending
+	</label>
+	<label style="margin-right: 20px">
+		<input type="radio" name="date" value="DESC" selected="selected" /> Date: Descending
+	</label>
+	<label style="margin-right: 20px">
+		<input type="checkbox" name="featured_image" /> Only posts with featured images
+	</label>
+	<button>Apply filter</button>
+	<input type="hidden" name="action" value="myfilter">
+</form>
+<div id="response"></div>
+	</header><!-- .page-header -->
 	<?php if ( have_posts() ) : ?>
-	<div class="row">
-
-
-		<?php
-// Start the Loop.
-		while ( have_posts() ) :
-			the_post();
-			?>
-					<div class="col-xs-12 col-sm-4">
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<header class="entry-header">
-		<?php if ( has_post_thumbnail() ) : ?>
-		    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-		        <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-fluid', 'title' => 'Feature image']); ?>
-		    </a>
-		<?php endif; ?>
-		<?php
-					if ( is_sticky() && is_home() && ! is_paged() ) {
-						printf( '<span class="sticky-post">%s</span>', _x( 'Featured', 'post', 'twentynineteen' ) );
-					}
-					the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-					?>
-				</header><!-- .entry-header -->
-
-				<div class="entry-content">
-					<?php the_excerpt(); ?>
-				</div><!-- .entry-content -->
-			</article><!-- #post-<?php the_ID(); ?> -->
-		</div>
+		<div class="row allposts row-eq-height">
 			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
+				<div class="col-xs-12 col-sm-4">
+					<?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
+				</div>
+				<?php
 // End the loop.
-		endwhile;
-		?>
-	</div>
+			endwhile;
+			?>
+		</div>
 		<?php
-
-// // Previous/next page navigation.
-// twentynineteen_the_posts_navigation();
-
 	else :
-// If no content, include the "No posts found" template.
+		get_template_part( 'template-parts/archive-post/content', 'none' ); 
 	endif;
 	?>
-	<div class="nav-previous alignleft"><?php previous_posts_link( 'Older posts' ); ?></div>
-<div class="nav-next alignright"><?php next_posts_link( 'Newer posts' ); ?></div>
+	<!-- <h2><?php the_posts_pagination(); ?></h2> -->
+
+	<?php
+global $wp_query; // you can remove this line if everything works for you
+ 
+// don't display the button if there are not enough posts
+if (  $wp_query->max_num_pages > 1 )
+	echo '<div class="misha_loadmore">More posts</div>'; // you can use <a> as well
+?>
 </div><!-- /.blog-main -->
-<?php get_sidebar(); ?>
+<!-- <?php get_sidebar(); ?> -->
+</div> <!-- / .row -->
+</div> <!-- / .container -->
 <?php get_footer(); ?>
+

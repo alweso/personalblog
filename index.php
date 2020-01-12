@@ -1,19 +1,37 @@
 <?php
 /**
- *
- */
-?>
+* Template Name: Index page
+*/
 
+?>
 <?php get_header(); ?>
-    <div class="col-sm-8 blog-main">
-main page
+<div class="container">
+<div class="row">
+    <div class="col-sm-12">
+
+  <!--     <?php
+      the_content();
+      ?> -->
+
       <?php
-      if ( have_posts() ) : while ( have_posts() ) : the_post();
-        get_template_part( 'content', get_post_format() );
-      endwhile; endif;
-      ?>
+
+			/* Start the Loop */
+			while ( have_posts() ) :
+				the_post();
+
+				the_content();
+
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) {
+					comments_template();
+				}
+
+			endwhile; // End of the loop.
+			?>
 
     </div> <!-- /.blog-main -->
 
     <?php get_sidebar(); ?>
+    </div> <!-- / .row -->
+</div> <!-- / .container -->
 <?php get_footer(); ?>

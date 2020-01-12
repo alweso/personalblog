@@ -12,8 +12,7 @@
 
 comment_form(); ?>
 
-<p>thats my comments template</p>
- <?php
+<?php
 if (have_comments()) : ?>
     <ol class="post-comments">
         <?php
