@@ -1,14 +1,16 @@
 <?php
 /**
-* Template Name: page template
+* Template Name: page template with right sidebar
 */
 
 ?>
 <?php get_header(); ?>
 <div class="container">
 <div class="row">
-    <div class="col-sm-12">
-
+    <div class="col-sm-9">
+  <!--     <?php
+      the_content();
+      ?> -->
 
       <?php
 
@@ -27,6 +29,7 @@
 			?>
 
     </div> <!-- /.blog-main -->
+    <?php get_sidebar(); ?>
     </div> <!-- / .row -->
 </div> <!-- / .container -->
 <?php get_footer(); ?>

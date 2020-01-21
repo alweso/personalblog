@@ -1,37 +1,55 @@
-<?php
+<?php 
 /**
-* Template Name: Index page
+* Template Name: Front Page
+* Template Post Type: page
+* @package WordPress
+* @subpackage personal-blog
+* @since personal-blog 1.0
 */
 
-?>
-<?php get_header(); ?>
+get_header(); ?>
 <div class="container">
 <div class="row">
-    <div class="col-sm-12">
+<div class="col-sm-8 blog-grid-3">
+	<header class="page-header">
+		<?php
+		the_archive_title( '<h1 class="page-title mt-4 mb-4">', '</h1>' );
+		?> 
+		<h5><?php 
+           if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); 
+?></h5>
+	</header><!-- .page-header -->
+	<div class="row">
+	<?php
+    $args = array(
+        'post_type' => 'post'
+    );
 
-  <!--     <?php
-      the_content();
-      ?> -->
+    $post_query = new WP_Query($args);
+// 
+?>
 
-      <?php
-
-			/* Start the Loop */
+<div class="row allposts row-eq-height">
+	dsddsds
+			<?php
 			while ( have_posts() ) :
 				the_post();
-
-				the_content();
-
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
-
-			endwhile; // End of the loop.
+				?>
+				<div class="col-xs-12 col-sm-4">
+					<?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
+				</div>
+				<?php
+// End the loop.
+			endwhile;
 			?>
+		</div>
+	</div>
 
-    </div> <!-- /.blog-main -->
-
-    <?php get_sidebar(); ?>
-    </div> <!-- / .row -->
+	
+	<h2><?php the_posts_pagination(); ?></h2>
+</div><!-- /.blog-main -->
+ <?php get_sidebar(); ?> 
+</div> <!-- / .row -->
 </div> <!-- / .container -->
 <?php get_footer(); ?>
+

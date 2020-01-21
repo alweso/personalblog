@@ -3,8 +3,8 @@
 * Template Name: Blog grid 4
 * Template Post Type: page
 * @package WordPress
-* @subpackage pascarubuddy
-* @since pascarubuddy 1.0
+* @subpackage personal-blog
+* @since personal-blog 1.0
 */
 
 get_header(); ?>

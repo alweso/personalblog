@@ -3,8 +3,8 @@
 * Template Name: Single with sidebar
 * Template Post Type: post
 * @package WordPress
-* @subpackage pascarubuddy
-* @since pascarubuddy 1.0
+* @subpackage personal-blog
+* @since personal-blog 1.0
 */
 ?>
 
@@ -48,7 +48,7 @@
 								sprintf(
 									wp_kses(
 										/* translators: %s: Name of current post. Only visible to screen readers */
-										__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentynineteen' ),
+										__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'personal-blog' ),
 										array(
 											'span' => array(
 												'class' => array(),
@@ -61,7 +61,7 @@
 
 							wp_link_pages(
 								array(
-									'before' => '<div class="page-links">' . __( 'Pages:', 'twentynineteen' ),
+									'before' => '<div class="page-links">' . __( 'Pages:', 'personal-blog' ),
 									'after'  => '</div>',
 								)
 							);

@@ -3,8 +3,8 @@
 * Template Name: Blog grid 2 sidebar right
 * Template Post Type: page
 * @package WordPress
-* @subpackage pascarubuddy
-* @since pascarubuddy 1.0
+* @subpackage personal-blog
+* @since personal-blog 1.0
 */
 
 get_header(); ?>
@@ -18,19 +18,6 @@ get_header(); ?>
 		<h5><?php 
            if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); 
 ?></h5>
-
-		<form id="misha_filters" action="#">
- 
-	<label for="misha_order_by">Order</label>
-	<select name="misha_order_by" id="misha_order_by">
-		<option value="date-DESC">Date ↓</option><!-- I will explode these values by "-" symbol later -->
-		<option value="date-ASC">Date ↑</option>
-		<option value="comment_count-DESC">Comments ↓</option>
-		<option value="comment_count-ASC">Comments ↑</option>
-	</select>
-	<!-- required hidden field for admin-ajax.php -->
-	<input type="hidden" name="action" value="mishafilter" />
-</form>
 	</header><!-- .page-header -->
 	<div class="row">
 	<?php

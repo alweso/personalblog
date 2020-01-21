@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('w-100'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('w-100 front-page-post'); ?>>
 	<header class="entry-header">
 		<?php if ( has_post_thumbnail() ) : ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
@@ -22,12 +22,12 @@
 
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
+<!-- 	<div class="entry-content">
 		<?php if ( has_post_thumbnail() ) : 
 			echo excerpt(30); 
 		else :
 			echo excerpt(80); 
 		endif ?>
-	</div><!-- .entry-content -->
+	</div><!-- .entry-content --> -->
 	<?php get_template_part( 'template-parts/archive-post/author-comments-date', 'none' ); ?>
 </article><!-- #post-<?php the_ID(); ?> -->

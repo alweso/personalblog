@@ -15,7 +15,11 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <div class="main-header">
+   
+                    <div class="main-header">
+                         <div class="container">
+        <div class="row">
+            <div class="col-12">
         <div>
         <!--  -->
             <nav class="navbar navbar-expand-lg">
@@ -55,7 +59,14 @@
 
         </div>
     </div>
-    <div class="category-menu" style="background: grey">
+            </div>
+        </div>
+    </div>
+
+    <div class="category-menu">
+         <div class="container">
+        <div class="row">
+            <div class="col-12">
       <?php
  wp_nav_menu( array(
                         'theme_location'    => 'secondary',
@@ -67,7 +78,7 @@
                         'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
                         'walker'            => new WP_Bootstrap_Navwalker()
                     ) );
-    ?>
+    ?></div></div></div>
     </div>
 
 
