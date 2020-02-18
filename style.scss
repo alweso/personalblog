@@ -66,7 +66,10 @@ $secondary-color: #142f56;
 $medium-grey: #5f5f5f;
 $light-grey: #b6b6b6;
 /* -------------------- general -------------------------------- */
-body {font-size: 16px;font-family: "Open Sans";line-height: 1.3em;background:#eef2f5;}
+body {font-size: 16px;font-family: "Open Sans";line-height: 1.3em;background:#eef2f5; }
+// body {   background: url('images/background.jpg');
+//     background-size: cover;
+//     background-attachment: fixed;}
 h1 {font-size: 3.3em; font-family: "Open Sans";}
 h2, h2.elementor-heading-title {font-size: 2.875em; font-family: "Open Sans";}
 h3 {font-size: 2.1875em; font-family: "Open Sans";}
@@ -234,6 +237,58 @@ table td:last-child {
     margin-right:30px;
     img {height:100%;width:auto;}
   }
+}
+
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+  0%   { opacity: 0; transform:scaleX(2);}
+  100% { opacity: 1; transform:scaleX(1);}
+}
+@-moz-keyframes NAME-YOUR-ANIMATION {
+   0%   { opacity: 0; transform:scaleX(2);}
+  100% { opacity: 1; transform:scaleX(1);}
+}
+@-o-keyframes NAME-YOUR-ANIMATION {
+ 0%   { opacity: 0; transform:scaleX(2);}
+  100% { opacity: 1; transform:scaleX(1);}
+}
+@keyframes NAME-YOUR-ANIMATION {
+ 0%   { opacity: 0; transform:scaleX(2);}
+  100% { opacity: 1; transform:scaleX(1);}
+}
+
+.ekit-template-content-header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 50px;
+    background:linear-gradient(20deg, #782eca 0%, #18b0c9 100%);
+    width: 100%;
+  -webkit-animation: NAME-YOUR-ANIMATION 0.5s; /* Safari 4+ */
+  -moz-animation:    NAME-YOUR-ANIMATION 0.5s; /* Fx 5+ */
+  -o-animation:      NAME-YOUR-ANIMATION 0.5s; /* Opera 12+ */
+  animation:         NAME-YOUR-ANIMATION 0.5s; /* IE 10+, Fx 29+ */
+  .elementskit-menu-container {
+    height: 50px !important;
+  }
+
+   .elementskit-navbar-nav {
+    padding: 6px;
+  }
+
+  .elementskit-navbar-nav > li {
+    margin-right:10px;
+  }
+
+  .elementskit-navbar-nav > li > a {
+    color:white !important;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .elementor-column-gap-default>.elementor-row>.elementor-column>.elementor-element-populated {
+    padding: 0 10px;
+  }
+
 }
 
 /* ------------------------------------------- secondary (category) menu ------------------------------ */
@@ -492,7 +547,55 @@ table td:last-child {
   background: white;
 }
 // popular posts
-.popular-posts {
+.most-read {
+  .wpp-list {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    counter-reset: postnumber;  
+  }
+  li {
+    flex: 1 0 100%;
+    margin-right: 20px;
+    position: relative;
+    overflow: visible;
+    &:before {
+      counter-increment: postnumber;
+    content: counter(postnumber);
+        position: absolute;
+    left: -8px;
+    top: -7px;
+    color: white;
+    background: #6b5db9;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    }
+    .wpp-thumbnail {
+      background: white;
+    padding: 12px 0px 0px 12px;
+    width: 100px;
+    }
+    .wpp-post-title {
+      color: black;
+      font-weight: bold;
+      display: block;
+      margin-top: 8px;
+      line-height: 18px;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .wpp-post-stats {
+      font-size: 13px;
+      color: #797979;
+    }
+  }
+}
+
+// popular posts
+.hot-discussions {
   .wpp-list {
     margin-top: 15px;
     display: flex;
@@ -771,11 +874,11 @@ table td:last-child {
   .recentcomments {
     width: 100%;
     margin: 10px auto;
-    background: #466f88;
+    background: #fff;
     padding: 11px;
     text-align: left;
     /* font-weight: 900; */
-    color: #fff;
+    color: #000;
     /* font-family: arial; */
     position: relative;
     border-radius: 5px;
@@ -804,8 +907,8 @@ table td:last-child {
     padding: 0;
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: 3fr 4fr;
-    // grid-template-rows: 1fr 1fr 1fr 1fr;
+     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
   }
   .post-title {
        color: black;
@@ -821,7 +924,7 @@ table td:last-child {
   }
   .cat-post-item:first-of-type {
     grid-column: 1/2;
-    grid-row: 1/6;
+    grid-row: 1/4;
     background: white;padding: 10px;
   }
   .cat-post-item:not(:first-of-type) {
@@ -840,31 +943,70 @@ table td:last-child {
 /* frontpage recent posts */
 
 .news-section-version-2 {
-  .category-posts-internal {
-    display: flex;
-    flex-wrap: wrap;
-    li {
-      background: white;
-      margin-bottom: 20px;
-      flex: 1 0 calc(33.33% - 30px);
-      margin: 0 10px 20px 10px;
-      padding: 10px;
-      .cat-post-title {
-        color: black;
-        font-weight: bold;
-        display: block;
-        margin-top: 8px;
-        line-height: 18px;
-        font-size: 14px;
-        margin-bottom: 6px;
-      }
-      .cat-post-date {
-        font-size: 13px;
-        color: #797979;
-      }
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .post-title {
+       color: black;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  h5 {
+       i {
+      margin-right: 10px;
+    }
+  }
+  .cat-post-item:first-of-type {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    background: white;padding: 10px;
+        p, a, span {padding: 10px;display:block;}
+
+  }
+  .cat-post-item:not(:first-of-type) {
+    padding: 10px;background: white;
+    img {
+      width: 100%;
+    float: left;
+    margin-right: 15px;
     }
   }
 }
+
+
+/* ----- */
+.ekit-wid-con .post--tab {
+  display: block !important;
+}
+
+.tab__list {
+  display:inline-block;
+}
+
+span.tab__list__item {
+  display: inline-block !important;
+  // width: auto;
+}
+
+.tabItem {
+ .tab__post--header {
+  height: 200px;
+ }
+}
+
+/* --- frontpage section with slider ---- */
+
+// .elementor-element-ae24cf4 {
+//     background: #dee4ea;
+//     padding: 65px 0 65px 0;
+// }
 
 /* ---------------- masonry grid -------------------------------- */
 
@@ -876,5 +1018,4 @@ table td:last-child {
     position: relative;
   } 
 }
-
 

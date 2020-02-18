@@ -297,6 +297,80 @@ table th {
   width: auto;
 }
 
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+  0% {
+    opacity: 0;
+    transform: scaleX(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@-moz-keyframes NAME-YOUR-ANIMATION {
+  0% {
+    opacity: 0;
+    transform: scaleX(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@-o-keyframes NAME-YOUR-ANIMATION {
+  0% {
+    opacity: 0;
+    transform: scaleX(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes NAME-YOUR-ANIMATION {
+  0% {
+    opacity: 0;
+    transform: scaleX(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+.ekit-template-content-header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 50px;
+  background: linear-gradient(20deg, #782eca 0%, #18b0c9 100%);
+  width: 100%;
+  -webkit-animation: NAME-YOUR-ANIMATION 0.5s;
+  /* Safari 4+ */
+  -moz-animation: NAME-YOUR-ANIMATION 0.5s;
+  /* Fx 5+ */
+  -o-animation: NAME-YOUR-ANIMATION 0.5s;
+  /* Opera 12+ */
+  animation: NAME-YOUR-ANIMATION 0.5s;
+  /* IE 10+, Fx 29+ */
+}
+.ekit-template-content-header.sticky .elementskit-menu-container {
+  height: 50px !important;
+}
+.ekit-template-content-header.sticky .elementskit-navbar-nav {
+  padding: 6px;
+}
+.ekit-template-content-header.sticky .elementskit-navbar-nav > li {
+  margin-right: 10px;
+}
+.ekit-template-content-header.sticky .elementskit-navbar-nav > li > a {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.1);
+}
+.ekit-template-content-header.sticky .elementor-column-gap-default > .elementor-row > .elementor-column > .elementor-element-populated {
+  padding: 0 10px;
+}
+
 /* ------------------------------------------- secondary (category) menu ------------------------------ */
 .category-menu {
   background: white;
@@ -596,20 +670,20 @@ footer.site-footer h4, footer.site-footer a {
   background: white;
 }
 
-.popular-posts .wpp-list {
+.most-read .wpp-list {
   margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   counter-reset: postnumber;
 }
-.popular-posts li {
+.most-read li {
   flex: 1 0 100%;
   margin-right: 20px;
   position: relative;
   overflow: visible;
 }
-.popular-posts li:before {
+.most-read li:before {
   counter-increment: postnumber;
   content: counter(postnumber);
   position: absolute;
@@ -622,12 +696,12 @@ footer.site-footer h4, footer.site-footer a {
   text-align: center;
   font-size: 12px;
 }
-.popular-posts li .wpp-thumbnail {
+.most-read li .wpp-thumbnail {
   background: white;
   padding: 12px 0px 0px 12px;
   width: 100px;
 }
-.popular-posts li .wpp-post-title {
+.most-read li .wpp-post-title {
   color: black;
   font-weight: bold;
   display: block;
@@ -636,7 +710,52 @@ footer.site-footer h4, footer.site-footer a {
   font-size: 14px;
   margin-bottom: 6px;
 }
-.popular-posts li .wpp-post-stats {
+.most-read li .wpp-post-stats {
+  font-size: 13px;
+  color: #797979;
+}
+
+.hot-discussions .wpp-list {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  counter-reset: postnumber;
+}
+.hot-discussions li {
+  flex: 1 0 100%;
+  margin-right: 20px;
+  position: relative;
+  overflow: visible;
+}
+.hot-discussions li:before {
+  counter-increment: postnumber;
+  content: counter(postnumber);
+  position: absolute;
+  left: -8px;
+  top: -7px;
+  color: white;
+  background: #6b5db9;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+.hot-discussions li .wpp-thumbnail {
+  background: white;
+  padding: 12px 0px 0px 12px;
+  width: 100px;
+}
+.hot-discussions li .wpp-post-title {
+  color: black;
+  font-weight: bold;
+  display: block;
+  margin-top: 8px;
+  line-height: 18px;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.hot-discussions li .wpp-post-stats {
   font-size: 13px;
   color: #797979;
 }
@@ -851,11 +970,11 @@ footer.site-footer h4, footer.site-footer a {
 .elementor-widget-wp-widget-recent-comments .recentcomments {
   width: 100%;
   margin: 10px auto;
-  background: #466f88;
+  background: #fff;
   padding: 11px;
   text-align: left;
   /* font-weight: 900; */
-  color: #fff;
+  color: #000;
   /* font-family: arial; */
   position: relative;
   border-radius: 5px;
@@ -880,7 +999,8 @@ footer.site-footer h4, footer.site-footer a {
   padding: 0;
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: 3fr 4fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 .news-section-version-1 .post-title {
   color: black;
@@ -893,7 +1013,7 @@ footer.site-footer h4, footer.site-footer a {
 }
 .news-section-version-1 .cat-post-item:first-of-type {
   grid-column: 1/2;
-  grid-row: 1/6;
+  grid-row: 1/4;
   background: white;
   padding: 10px;
 }
@@ -911,31 +1031,61 @@ footer.site-footer h4, footer.site-footer a {
 }
 
 /* frontpage recent posts */
-.news-section-version-2 .category-posts-internal {
-  display: flex;
-  flex-wrap: wrap;
+.news-section-version-2 ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
-.news-section-version-2 .category-posts-internal li {
+.news-section-version-2 .post-title {
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+}
+.news-section-version-2 h5 i {
+  margin-right: 10px;
+}
+.news-section-version-2 .cat-post-item:first-of-type {
+  grid-column: 1/3;
+  grid-row: 1/3;
   background: white;
-  margin-bottom: 20px;
-  flex: 1 0 calc(33.33% - 30px);
-  margin: 0 10px 20px 10px;
   padding: 10px;
 }
-.news-section-version-2 .category-posts-internal li .cat-post-title {
-  color: black;
-  font-weight: bold;
+.news-section-version-2 .cat-post-item:first-of-type p, .news-section-version-2 .cat-post-item:first-of-type a, .news-section-version-2 .cat-post-item:first-of-type span {
+  padding: 10px;
   display: block;
-  margin-top: 8px;
-  line-height: 18px;
-  font-size: 14px;
-  margin-bottom: 6px;
 }
-.news-section-version-2 .category-posts-internal li .cat-post-date {
-  font-size: 13px;
-  color: #797979;
+.news-section-version-2 .cat-post-item:not(:first-of-type) {
+  padding: 10px;
+  background: white;
+}
+.news-section-version-2 .cat-post-item:not(:first-of-type) img {
+  width: 100%;
+  float: left;
+  margin-right: 15px;
 }
 
+/* ----- */
+.ekit-wid-con .post--tab {
+  display: block !important;
+}
+
+.tab__list {
+  display: inline-block;
+}
+
+span.tab__list__item {
+  display: inline-block !important;
+}
+
+.tabItem .tab__post--header {
+  height: 200px;
+}
+
+/* --- frontpage section with slider ---- */
 /* ---------------- masonry grid -------------------------------- */
 .grid-item {
   padding: 10px;

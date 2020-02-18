@@ -15,9 +15,10 @@
 </head>
 
 <body <?php body_class(); ?>>
-   
+
+
                     <div class="main-header">
-                         <div class="container">
+                         <div class="container-fluid">
         <div class="row">
             <div class="col-12">
         <div>
@@ -26,33 +27,22 @@
   <a class="navbar-brand" href="#">
       <?php the_custom_logo() ?>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
- <?php
-                    wp_nav_menu( array(
-                        'theme_location'    => 'primary',
-                        'depth'             => 2,
-                        'container'         => 'div',
-                        'container_class'   => 'collapse navbar-collapse',
-                        'container_id'      => 'navbarSupportedContent',
-                        'menu_class'        => 'navbar-nav mr-auto',
-                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                        'walker'            => new WP_Bootstrap_Navwalker()
-                    ) );
+  <div>
+     <?php
+
+                    wp_nav_menu( array( 'theme_location' => 'primary' ) ); 
                     ?>
+  </div>
+
 
                    <!--  <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form> -->
 
-    <?php get_search_form(true) ?>
-    <div>
-        <button>Register</button>
-        <button>Log in</button>
-    </div>
 </nav>
+
+
 
 
 
@@ -67,18 +57,7 @@
          <div class="container">
         <div class="row">
             <div class="col-12">
-      <?php
- wp_nav_menu( array(
-                        'theme_location'    => 'secondary',
-                        'depth'             => 2,
-                        'container'         => 'div',
-                        'container_class'   => 'category-menu',
-                        'container_id'      => 'navbarSupportedContent',
-                        'menu_class'        => 'navbar-nav mr-auto',
-                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                        'walker'            => new WP_Bootstrap_Navwalker()
-                    ) );
-    ?></div></div></div>
+      </div></div></div>
     </div>
 
 

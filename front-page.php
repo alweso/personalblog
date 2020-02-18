@@ -8,36 +8,39 @@
 */
 
 get_header(); ?>
-<div class="container frontpage">
-	<div class="row">
-		<div class="col-sm-9 frontpage-latest">
-			<div class="row">
-				<?php
-				$args = array(
-					'post_type' => 'post',
-					'posts_per_page' => 5
-				);
-				$count = 0;
-				$post_query = new WP_Query($args);
-				if($post_query->have_posts() ) {
-					while($post_query->have_posts() ) {
-						$count++;
-						$post_query->the_post();
+ <?php 
+  $categories = get_categories();
+  foreach ($categories as $cat) {
+        echo '<div class="category-color-box" style="height:0;width:0;overflow:hidden;opacity:0;">';
+        // echo '<h1 class="acf-category-name">'.$cat->name.'</h1>';
+        echo '<h1 class="acf-category-id">category-'.$cat->term_id.'</h1>';
+        echo '<h1 class="acf-category-color">'.get_field('category_colors', $cat).'</h1>';
+        //echo '<br />';
+    
+        echo '</div>';
+    }
+?>
+<div class="">
 
 
-						if ($count === 1) { ?>
-							<div class="col-8"><?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?></div><?php
-						} else {?>
-							<div class="col-4"><?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?></div><?php
-						}
-					}
+
+      <?php
+
+			/* Start the Loop */
+			while ( have_posts() ) :
+				the_post();
+
+				the_content();
+
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) {
+					comments_template();
 				}
-				?>
 
-			</div>
-		</div><!-- /.blog-main -->
-		<?php get_sidebar(); ?> 
-	</div> <!-- / .row -->
+			endwhile; // End of the loop.
+			?>
+
+
 </div> <!-- / .container -->
 <?php get_footer(); ?>
 

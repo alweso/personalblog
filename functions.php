@@ -98,7 +98,6 @@ add_theme_support(
 
 if ( ! isset( $content_width ) ) $content_width = 1300;
 
-require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 
 register_nav_menus( array(
 	'primary' => __( 'Primary Menu', 'personal-blog' ),
@@ -106,7 +105,6 @@ register_nav_menus( array(
 register_nav_menus( array(
     'secondary' => __( 'Secondary Menu', 'personal-blog' ),
 ) );
-// require_once('bootstrap-navwalker/class-wp-bootstrap-navwalker.php');
 
 
 // function custom_excerpt_length( $length ) {
@@ -317,4 +315,191 @@ add_filter( 'excerpt_length', function($length) {
     return 520;
 } );
 
+if( function_exists('acf_add_options_page') ) {
+  
+  acf_add_options_page();
+  
+}
+
+
+require_once get_template_directory() . '/class-tgm-plugin-activation.php';
+
+add_action( 'tgmpa_register', 'personal_blog_register_required_plugins' );
+
+function personal_blog_register_required_plugins() {
+  /*
+   * Array of plugin arrays. Required keys are name and slug.
+   * If the source is NOT from the .org repo, then source is also required.
+   */
+  $plugins = array(
+
+    // This is an example of how to include a plugin bundled with a theme.
+    array(
+            'name' => 'Elementor', // The plugin name.
+            'slug' => 'elementor', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+
+     array(
+            'name' => 'ElementsKit Lite', // The plugin name.
+            'slug' => 'elementskit-lite', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+
+     array(
+            'name' => 'Unlimited Elements for Elementor', // The plugin name.
+            'slug' => 'unlimited-elements-for-elementor', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+     array(
+            'name' => 'WordPress Popular Posts', // The plugin name.
+            'slug' => 'wordpress-popular-posts', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+    array(
+            'name' => 'WordPress Related Posts Thumbnails', // The plugin name.
+            'slug' => 'related-posts-thumbnails', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),   
+    array(
+            'name' => 'Ad Inserter', // The plugin name.
+            'slug' => 'ad-inserter', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+
+    array(
+            'name' => 'One Click Demo Import', // The plugin name.
+            'slug' => 'one-click-demo-import', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+    array(
+            'name' => 'Smart Slider 3', // The plugin name.
+            'slug' => 'smart-slider-3', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+    array(
+            'name' => 'Ditty News Ticker', // The plugin name.
+            'slug' => 'ditty-news-ticker', // The plugin slug (typically the folder name).
+            'required' => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+    array(
+      'name'               => 'Advanced Custom Fields Pro', // The plugin name.
+      'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+      'source'             => get_template_directory() . '/inc/plugins/advanced-custom-fields-pro.zip', // The plugin source.
+      'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+    ),
+     array(
+      'name'               => 'ACF Options Page', // The plugin name.
+      'slug'               => 'acf-options-page', // The plugin slug (typically the folder name).
+      'source'             => get_template_directory() . '/inc/plugins/acf-options-page.zip', // The plugin source.
+      'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+    ),
+     array(
+      'name'               => 'Elementor Test Extension', // The plugin name.
+      'slug'               => 'elementor-test-extension', // The plugin slug (typically the folder name).
+      'source'             => get_template_directory() . '/inc/plugins/elementor-test-extension.zip', // The plugin source.
+      'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+    ),
+
+  );
+
+  /*
+   * Array of configuration settings. Amend each line as needed.
+   *
+   * TGMPA will start providing localized text strings soon. If you already have translations of our standard
+   * strings available, please help us make TGMPA even better by giving us access to these translations or by
+   * sending in a pull-request with .po file(s) with the translations.
+   *
+   * Only uncomment the strings in the config array if you want to customize the strings.
+   */
+  $config = array(
+    'id'           => 'personal-blog',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+    'default_path' => '',                      // Default absolute path to bundled plugins.
+    'menu'         => 'tgmpa-install-plugins', // Menu slug.
+    'has_notices'  => true,                    // Show admin notices or not.
+    'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+    'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+    'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+    'message'      => '',                      // Message to output right before the plugins table.
+
+    /*
+    'strings'      => array(
+      'page_title'                      => __( 'Install Required Plugins', 'personal-blog' ),
+      'menu_title'                      => __( 'Install Plugins', 'personal-blog' ),
+      /* translators: %s: plugin name. * /
+      'installing'                      => __( 'Installing Plugin: %s', 'personal-blog' ),
+      /* translators: %s: plugin name. * /
+      'updating'                        => __( 'Updating Plugin: %s', 'personal-blog' ),
+      'oops'                            => __( 'Something went wrong with the plugin API.', 'personal-blog' ),
+      'notice_can_install_required'     => _n_noop(
+        /* translators: 1: plugin name(s). * /
+        'This theme requires the following plugin: %1$s.',
+        'This theme requires the following plugins: %1$s.',
+        'personal-blog'
+      ),
+      'notice_can_install_recommended'  => _n_noop(
+        /* translators: 1: plugin name(s). * /
+        'This theme recommends the following plugin: %1$s.',
+        'This theme recommends the following plugins: %1$s.',
+        'personal-blog'
+      ),
+      'notice_ask_to_update'            => _n_noop(
+        /* translators: 1: plugin name(s). * /
+        'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
+        'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
+        'personal-blog'
+      ),
+      'notice_ask_to_update_maybe'      => _n_noop(
+        /* translators: 1: plugin name(s). * /
+        'There is an update available for: %1$s.',
+        'There are updates available for the following plugins: %1$s.',
+        'personal-blog'
+      ),
+      'notice_can_activate_required'    => _n_noop(
+        /* translators: 1: plugin name(s). * /
+        'The following required plugin is currently inactive: %1$s.',
+        'The following required plugins are currently inactive: %1$s.',
+        'personal-blog'
+      ),
+      'notice_can_activate_recommended' => _n_noop(
+        /* translators: 1: plugin name(s). * /
+        'The following recommended plugin is currently inactive: %1$s.',
+        'The following recommended plugins are currently inactive: %1$s.',
+        'personal-blog'
+      ),
+      'install_link'                    => _n_noop(
+        'Begin installing plugin',
+        'Begin installing plugins',
+        'personal-blog'
+      ),
+      'update_link'             => _n_noop(
+        'Begin updating plugin',
+        'Begin updating plugins',
+        'personal-blog'
+      ),
+      'activate_link'                   => _n_noop(
+        'Begin activating plugin',
+        'Begin activating plugins',
+        'personal-blog'
+      ),
+      'return'                          => __( 'Return to Required Plugins Installer', 'personal-blog' ),
+      'plugin_activated'                => __( 'Plugin activated successfully.', 'personal-blog' ),
+      'activated_successfully'          => __( 'The following plugin was activated successfully:', 'personal-blog' ),
+      /* translators: 1: plugin name. * /
+      'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'personal-blog' ),
+      /* translators: 1: plugin name. * /
+      'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'personal-blog' ),
+      /* translators: 1: dashboard link. * /
+      'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'personal-blog' ),
+      'dismiss'                         => __( 'Dismiss this notice', 'personal-blog' ),
+      'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'personal-blog' ),
+      'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'personal-blog' ),
+
+      'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
+    ),
+    */
+  );
+
+  tgmpa( $plugins, $config );
+}
 ?>

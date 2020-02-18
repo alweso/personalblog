@@ -7,12 +7,14 @@
 		while ( have_posts() ) : the_post();
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 				<div class="col-sm-8 offset-sm-2 blog-main">
 				<header class="entry-header">
 					<div class="categories">
 						<?php the_category() ?>
 					</div>
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+\
 											<div class="author-and-date">
 						<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" class="author-avatar">
 							<?php echo get_avatar( get_the_author_meta( 'ID' ), 40); ?>
