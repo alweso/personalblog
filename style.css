@@ -59,6 +59,12 @@ body {
   background: #eef2f5;
 }
 
+body {
+  background: url("images/paper.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
 h1 {
   font-size: 3.3em;
   font-family: "Open Sans";

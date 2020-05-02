@@ -340,64 +340,69 @@ function personal_blog_register_required_plugins() {
             'required' => true, // If false, the plugin is only 'recommended' instead of required.
         ),
 
-     array(
-            'name' => 'ElementsKit Lite', // The plugin name.
-            'slug' => 'elementskit-lite', // The plugin slug (typically the folder name).
-            'required' => true, // If false, the plugin is only 'recommended' instead of required.
-        ),
+     // array(
+     //        'name' => 'ElementsKit Lite', // The plugin name.
+     //        'slug' => 'elementskit-lite', // The plugin slug (typically the folder name).
+     //        'required' => true, // If false, the plugin is only 'recommended' instead of required.
+     //    ),
 
-     array(
-            'name' => 'Unlimited Elements for Elementor', // The plugin name.
-            'slug' => 'unlimited-elements-for-elementor', // The plugin slug (typically the folder name).
-            'required' => true, // If false, the plugin is only 'recommended' instead of required.
-        ),
-     array(
-            'name' => 'WordPress Popular Posts', // The plugin name.
-            'slug' => 'wordpress-popular-posts', // The plugin slug (typically the folder name).
-            'required' => true, // If false, the plugin is only 'recommended' instead of required.
-        ),
-    array(
-            'name' => 'WordPress Related Posts Thumbnails', // The plugin name.
-            'slug' => 'related-posts-thumbnails', // The plugin slug (typically the folder name).
-            'required' => true, // If false, the plugin is only 'recommended' instead of required.
-        ),   
+     // array(
+     //        'name' => 'Unlimited Elements for Elementor', // The plugin name.
+     //        'slug' => 'unlimited-elements-for-elementor', // The plugin slug (typically the folder name).
+     //        'required' => true, // If false, the plugin is only 'recommended' instead of required.
+     //    ),
+    //  array(
+    //         'name' => 'WordPress Popular Posts', // The plugin name.
+    //         'slug' => 'wordpress-popular-posts', // The plugin slug (typically the folder name).
+    //         'required' => true, // If false, the plugin is only 'recommended' instead of required.
+    //     ),
+    // array(
+    //         'name' => 'WordPress Related Posts Thumbnails', // The plugin name.
+    //         'slug' => 'related-posts-thumbnails', // The plugin slug (typically the folder name).
+    //         'required' => true, // If false, the plugin is only 'recommended' instead of required.
+    //     ),   
     array(
             'name' => 'Ad Inserter', // The plugin name.
             'slug' => 'ad-inserter', // The plugin slug (typically the folder name).
             'required' => true, // If false, the plugin is only 'recommended' instead of required.
         ),
 
-    array(
-            'name' => 'One Click Demo Import', // The plugin name.
-            'slug' => 'one-click-demo-import', // The plugin slug (typically the folder name).
-            'required' => true, // If false, the plugin is only 'recommended' instead of required.
-        ),
+    // array(
+    //         'name' => 'One Click Demo Import', // The plugin name.
+    //         'slug' => 'one-click-demo-import', // The plugin slug (typically the folder name).
+    //         'required' => true, // If false, the plugin is only 'recommended' instead of required.
+    //     ),
     array(
             'name' => 'Smart Slider 3', // The plugin name.
             'slug' => 'smart-slider-3', // The plugin slug (typically the folder name).
             'required' => true, // If false, the plugin is only 'recommended' instead of required.
         ),
+    // array(
+    //         'name' => 'Ditty News Ticker', // The plugin name.
+    //         'slug' => 'ditty-news-ticker', // The plugin slug (typically the folder name).
+    //         'required' => true, // If false, the plugin is only 'recommended' instead of required.
+    //     ),
     array(
-            'name' => 'Ditty News Ticker', // The plugin name.
-            'slug' => 'ditty-news-ticker', // The plugin slug (typically the folder name).
+            'name' => 'Unyson', // The plugin name.
+            'slug' => 'unyson', // The plugin slug (typically the folder name).
             'required' => true, // If false, the plugin is only 'recommended' instead of required.
         ),
-    array(
-      'name'               => 'Advanced Custom Fields Pro', // The plugin name.
-      'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
-      'source'             => get_template_directory() . '/inc/plugins/advanced-custom-fields-pro.zip', // The plugin source.
-      'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-    ),
+    // array(
+    //   'name'               => 'Advanced Custom Fields Pro', // The plugin name.
+    //   'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+    //   'source'             => get_template_directory() . '/inc/plugins/advanced-custom-fields-pro.zip', // The plugin source.
+    //   'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+    // ),
+    //  array(
+    //   'name'               => 'ACF Options Page', // The plugin name.
+    //   'slug'               => 'acf-options-page', // The plugin slug (typically the folder name).
+    //   'source'             => get_template_directory() . '/inc/plugins/acf-options-page.zip', // The plugin source.
+    //   'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+    // ),
      array(
-      'name'               => 'ACF Options Page', // The plugin name.
-      'slug'               => 'acf-options-page', // The plugin slug (typically the folder name).
-      'source'             => get_template_directory() . '/inc/plugins/acf-options-page.zip', // The plugin source.
-      'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-    ),
-     array(
-      'name'               => 'Elementor Test Extension', // The plugin name.
-      'slug'               => 'elementor-test-extension', // The plugin slug (typically the folder name).
-      'source'             => get_template_directory() . '/inc/plugins/elementor-test-extension.zip', // The plugin source.
+      'name'               => 'Elementor Awesomesauce', // The plugin name.
+      'slug'               => 'elementor-awesomesauce', // The plugin slug (typically the folder name).
+      'source'             => get_template_directory() . '/inc/plugins/elementor-awesomesauce.zip', // The plugin source.
       'required'           => true, // If false, the plugin is only 'recommended' instead of required.
     ),
 

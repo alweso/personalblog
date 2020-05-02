@@ -64,12 +64,15 @@ $base-color: #58a89d;
 $base-color-darker: #2f6b71;
 $secondary-color: #142f56;
 $medium-grey: #5f5f5f;
-$light-grey: #b6b6b6;
+$light-grey: #b6b6b6;  
 /* -------------------- general -------------------------------- */
 body {font-size: 16px;font-family: "Open Sans";line-height: 1.3em;background:#eef2f5; }
 // body {   background: url('images/background.jpg');
 //     background-size: cover;
 //     background-attachment: fixed;}
+body {   background: url('images/paper.png');
+    background-repeat: repeat;
+    background-attachment: fixed;}
 h1 {font-size: 3.3em; font-family: "Open Sans";}
 h2, h2.elementor-heading-title {font-size: 2.875em; font-family: "Open Sans";}
 h3 {font-size: 2.1875em; font-family: "Open Sans";}
