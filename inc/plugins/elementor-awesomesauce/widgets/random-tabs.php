@@ -94,7 +94,6 @@ protected function _register_controls() {
     ]
   );
 
-
   $this->add_control(
     'post_count',
     [
@@ -107,32 +106,28 @@ protected function _register_controls() {
   $this->add_control(
     'tabs',
     [
-      'label' => esc_html__('Tabs', 'digiqole'),
+      'label' => esc_html__('Tabs', 'elementor-awesomesauce'),
       'type' => Controls_Manager::REPEATER,
       'default' => [
         [
-          'tab_title' => esc_html__('Add Label', 'digiqole'),
+          'tab_title' => esc_html__('Add Label', 'elementor-awesomesauce'),
           'post_cats' => 1,
         ],
       ],
       'fields' => [
         [
           'name' => 'post_cats',
-          'label' => __( 'Categories( Include )', 'elementor-pro' ),
+          'label' => __( 'Categories( Include )', 'elementor-awesomesauce' ),
           'type' => \Elementor\Controls_Manager::SELECT2,
           'options' => $this->post_category(),
           'label_block' => true,
           'multiple' => true,
         ],
-        [   'name' => 'tab_title',
-        'label'         => esc_html__( 'Tab title', 'digiqole' ),
+        [   
+        'name' => 'tab_title',
+        'label'         => esc_html__( 'Tab title', 'elementor-awesomesauce' ),
         'type'          => Controls_Manager::TEXT,
         'default'       => 'Add Label',
-      ],
-      [   'name' => 'tab_text',
-        'label'         => esc_html__( 'Tab text', 'digiqole' ),
-        'type'          => Controls_Manager::TEXT,
-        'default'       => 'tab text',
       ],
     ],
   ]
@@ -157,6 +152,7 @@ protected function render() {
   $tabs = $settings['tabs'];
   $post_count = count($tabs);
   $tab_text = $settings['tab_text'];
+  $tab_title = $settings['tab_title'];
 
 
   ?>
@@ -165,19 +161,25 @@ protected function render() {
 
   <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <?php foreach ( $tabs as $tab_key=>$value ) {
-      if( $tab_key == 0 ){ ?>
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-      <?php } else { ?>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-      <?php
-       }
+    <?php foreach ($tabs as $tab_key=>$value) {
+       if( $tab_key == 0 ){
+                                          echo '<a id="nav-'.$this->get_id().$value['_id'].'-tab" class="nav-link active" href="#nav-'.$this->get_id().$value['_id'].'" data-toggle="tab" aria-controls="nav-'.$this->get_id().$value['_id'].'" aria-selected="true">'.$value['tab_title'].'</a>';
+                                    } else {
+                                          echo '<a id="nav-'.$this->get_id().$value['_id'].'-tab" class="nav-link" href="#nav-'.$this->get_id().$value['_id'].'" data-toggle="tab" aria-controls="nav-'.$this->get_id().$value['_id'].'" aria-selected="false">'.$value['tab_title'].'</a>';
+                                    }
     }?> 
   </div>
 </nav>
 
 <div class="tab-content" id="nav-tabContent">
   <?php foreach ($tabs as $content_key=>$value) {
+
+ if( $content_key == 0){
+                           echo '<div role="tabpanel" class="tab-pane fade active show" id="nav-'.$this->get_id().$value['_id'].'" aria-labelledby="nav-'.$this->get_id().$value['_id'].'-tab">';
+                        } else {
+                           echo '<div role="tabpanel" class="tab-pane fade" id="nav-'.$this->get_id().$value['_id'].'" aria-labelledby="nav-'.$this->get_id().$value['_id'].'-tab">';
+                        }
+
   $args = array(
     'post_type'   =>  'post',
     'post_status' => 'publish',
@@ -185,35 +187,19 @@ protected function render() {
     'category__in' => $value['post_cats'],
   );
 
-  $query = new \WP_Query($args); 
+  $query = new \WP_Query($args); ?>
 
-    if( $content_key == 0 ){?>
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <?php 
-    if ( $query->have_posts() ) {
-      while ($query->have_posts()) : $query->the_post(); ?>
-          <h5><?php the_title();?></h5><?php
-      endwhile; 
-      wp_reset_postdata();
-    } 
-    ?>
-  </div>
-    <?php } else { ?>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <?php 
-    if ( $query->have_posts() ) {
-      while ($query->have_posts()) : $query->the_post(); ?>
-          <h5><?php the_title();?></h5><?php
-      endwhile; 
-      wp_reset_postdata();
-    }; ?>
-  </div>
-    <?php 
-  }
-  wp_reset_postdata();
-  } ?>
-  
-</div>
+     <?php if ( $query->have_posts() ) : ?>
+     <?php while ($query->have_posts()) : $query->the_post(); ?>
+          <h5><?php the_title();?></h5>
+      <?php endwhile; 
+      wp_reset_postdata(); ?>
+      <?php endif; ?>
+      </div><!-- Tab pane 1 end -->
+  <?php } ?> <!-- closing tab content -->
+
+</div> <!-- closing foreach -->
+
 <?php }
 
 protected function _content_template() {
