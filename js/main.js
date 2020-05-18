@@ -2,12 +2,10 @@ jQuery(document).ready(function(){
 	var colorCodes = [];
 	jQuery('.acf-category-color').each(function(){
 		colorCodes.push(jQuery(this).text());
-		console.log(colorCodes);
 	});
 	var categoryClasses = [];
 	jQuery('.acf-category-id').each(function(){
 		categoryClasses.push(jQuery(this).text());
-		console.log(categoryClasses);
 	});
 
 	var i;
@@ -16,8 +14,7 @@ jQuery(document).ready(function(){
 	// console.log(typeof(categoryClasses));
 	jQuery('.'+categoryClasses[i]).addClass(colorCodes[i]).attr('style', 'background:' + colorCodes[i] + ';display:inline-block;color:white;font-size:11px;padding:0px 5px;');
 	// console.log(jQuery(categoryClasses[i]).text())
-	console.log(categoryClasses[i]);
-	}
+}
 
 
 	// sticky menu
@@ -30,4 +27,31 @@ jQuery(document).ready(function(){
 			jQuery('.ekit-template-content-header').removeClass('sticky');
 		}
 	});
+
+
+});
+
+jQuery(window).load(function() {
+	/* ------------------------ this will go to video plugin later on -------------------- */
+
+	/*JS FOR SCROLLING THE ROW OF THUMBNAILS*/ 
+  // jQuery('.vid-item').each(function(index){
+  //   jQuery(this).on('click', function(){
+  //     var current_index = index+1;
+  //     jQuery('.vid-item .thumb').removeClass('active');
+  //     jQuery('.vid-item:nth-child('+current_index+') .thumb').addClass('active');
+  //   });
+  // });
+
+  jQuery('.video_link').each(function(){
+  	var link = jQuery(this).text();
+  	var updatedString = link.substring(17);
+  	jQuery('#vid_frame').attr('src', 'https://www.youtube.com/embed/' + updatedString + '?rel=0&showinfo=0&autohide=1');
+  });
+
+  jQuery('.video_on_click').on('click', function(){
+  	var link2 = jQuery(this).siblings( ".video_link" ).text();
+  	var updatedString2 = link2.substring(17);
+	jQuery('#vid_frame').attr('src', 'https://youtube.com/embed/' + updatedString2 + '?autoplay=1&rel=0&showinfo=0&autohide=1');
+  });
 });
