@@ -126,6 +126,7 @@ register_nav_menus( array(
 
 //   return $excerpt;
 // }
+add_filter('acf/validate_value/key='.$field_key, 'unique_repeater_sub_field', 20, 4);
 
 function content($limit) {
     $content = explode(' ', get_the_content(), $limit);
@@ -171,30 +172,28 @@ function wpdocs_theme_setup() {
 // Fullscreen slideshow: 2800 x 1500px
 // Gallery images: 1500px x auto width
 
+
     // Add featured image sizes
     add_image_size( 'hero', 2880, 1500 ); 
     add_image_size( 'landscape-post-image', 1200, 900 ); 
     add_image_size( 'small-horizontal', 150, 100, true ); // width, height, crop
+    add_image_size( 'small-thumbnail', 150, 150, true ); // width, height, crop
     add_image_size( 'medium-horizontal', 320, 213, true ); // width, height, crop
+    add_image_size( 'medium-thumbnail', 320, 320, true ); // width, height, crop
     add_image_size( 'large-horizontal', 800, 600, true ); // width, height, crop
     add_image_size( 'featured-small', 700, 460, true, true ); // width, height, crop
     add_image_size( 'featured-gallery',600, 400, true ); // width, height, crop
-    // add_image_size( 'featured-small', 320, 147, true ); // width, height, crop
 
-    // Add other useful image sizes for use through Add Media modal
-    add_image_size( 'medium-width', 480 );
-    add_image_size( 'medium-height', 9999, 480 );
-    add_image_size( 'medium-something', 480, 480 );
 
     // Register the three useful image sizes for use in Add Media modal
-    add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
-    function wpshout_custom_sizes( $sizes ) {
-        return array_merge( $sizes, array(
-            'medium-width' => __( 'Medium Width', 'personal-blog'),
-            'medium-height' => __( 'Medium Height', 'personal-blog'),
-            'medium-something' => __( 'Medium Something', 'personal-blog'),
-        ) );
-    }
+    // add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
+    // function wpshout_custom_sizes( $sizes ) {
+    //     return array_merge( $sizes, array(
+    //         'medium-width' => __( 'Medium Width', 'personal-blog'),
+    //         'medium-height' => __( 'Medium Height', 'personal-blog'),
+    //         'medium-something' => __( 'Medium Something', 'personal-blog'),
+    //     ) );
+    // }
 }
 
 /**
@@ -219,7 +218,37 @@ add_filter( 'excerpt_length', function($length) {
 
 if( function_exists('acf_add_options_page') ) {
   
-  acf_add_options_page();
+  acf_add_options_page(array(
+    'page_title'  => 'Menheer Theme General Settings',
+    'menu_title'  => 'Menheer Theme Settings',
+    'menu_slug'   => 'menheer-theme-general-settings',
+    'capability'  => 'edit_posts',
+    'redirect'    => false
+  ));
+
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Header',
+    'menu_title'  => 'Header',
+    'parent_slug' => 'menheer-theme-general-settings',
+  ));
+  
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Header',
+    'menu_title'  => 'Header',
+    'parent_slug' => 'menheer-theme-general-settings',
+  ));
+
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Featured posts',
+    'menu_title'  => 'Featured posts',
+    'parent_slug' => 'menheer-theme-general-settings',
+  ));
+  
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Theme Footer Settings',
+    'menu_title'  => 'Footer',
+    'parent_slug' => 'menheer-theme-general-settings',
+  ));
   
 }
 
