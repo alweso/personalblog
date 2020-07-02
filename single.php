@@ -1,9 +1,16 @@
 <?php get_header(); ?>
+<?php
+// Get the current value.
+$count = (int) get_field('number_of_views');
+// Increase it.
+$count++;
+// Update with new value.
+update_field('number_of_views', $count);
+?>
 <div class="container post-container">
 	<div class="row">
-
-		<?php 
-		if ( have_posts() ) { 
+		<?php
+		if ( have_posts() ) {
 			while ( have_posts() ) : the_post();
 				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -19,7 +26,7 @@
 									<?php echo get_avatar( get_the_author_meta( 'ID' ), 40); ?>
 								</a>
 								<span>by <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author(); ?></a></span>
-								<?php the_date( 'F j, Y' ); ?> 
+								<?php the_date( 'F j, Y' ); ?>
 								<span><?php the_category() ?></span>
 							</div>
 							<?php if ( has_post_thumbnail() ) : ?>
@@ -66,11 +73,11 @@
 
 					<?php
 				endwhile;
-			} 
+			}
 			?>
 			<?php posts_nav_link(); ?>
 		</div><!-- /.blog-main -->
-		<?php get_sidebar(); ?> 
+		<?php get_sidebar(); ?>
 	</div> <!-- / .row -->
 </div> <!-- / .container -->
 <?php get_footer(); ?>

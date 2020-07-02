@@ -3,7 +3,7 @@
 function bootstrapstarter_enqueue_styles() {
     wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css' );
     $dependencies = array('bootstrap');
-    wp_enqueue_style( 'bootstrapstarter-style', get_stylesheet_uri(), $dependencies ); 
+    wp_enqueue_style( 'bootstrapstarter-style', get_stylesheet_uri(), $dependencies );
 }
 
 function bootstrapstarter_enqueue_scripts() {
@@ -20,7 +20,20 @@ function my_theme_scripts() {
 }
 
 
+function owl_carousel_styles() {
+    wp_enqueue_style( 'owl_carousel_styles',  get_template_directory_uri() . '/assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css');
+    wp_enqueue_style( 'owl_carousel_styles_demo',  get_template_directory_uri() . '/assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css');
+}
+
+function owl_carousel_scripts() {
+    $dependencies = array('jquery');
+    wp_enqueue_script('owl_carousel_scripts', get_template_directory_uri().'/assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js', $dependencies, '3.3.6', true );
+}
+
+
 add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
+add_action( 'wp_enqueue_scripts', 'owl_carousel_scripts' );
+add_action( 'wp_enqueue_scripts', 'owl_carousel_styles' );
 add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_scripts' );
@@ -70,7 +83,7 @@ function bootstrapstarter_widgets_init() {
         'before_title'  => '<h4>',
         'after_title'   => '</h4>',
     ) );
-    
+
     register_sidebar( array(
         'name'          => 'Sidebar - Default',
         'id'            => 'sidebar-2',
@@ -139,7 +152,7 @@ function content($limit) {
     }
 
     $content = preg_replace('/\[.+\]/','', $content);
-    $content = apply_filters('the_content', $content); 
+    $content = apply_filters('the_content', $content);
     $content = str_replace(']]>', ']]&gt;', $content);
 
     return $content;
@@ -163,7 +176,7 @@ add_action( 'after_setup_theme', 'themename_custom_header_setup' );
 add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
 function wpdocs_theme_setup() {
     // add_image_size( 'blog-thumb', 400, 550, true ); // (cropped)
-    // add_image_size( 'single-post-thumb', 1000, 650); 
+    // add_image_size( 'single-post-thumb', 1000, 650);
 
    // Blog posts: 1200 x 630px
 // Hero images (full screen images): 2880 x 1500px
@@ -174,8 +187,8 @@ function wpdocs_theme_setup() {
 
 
     // Add featured image sizes
-    add_image_size( 'hero', 2880, 1500 ); 
-    add_image_size( 'landscape-post-image', 1200, 900 ); 
+    add_image_size( 'hero', 2880, 1500 );
+    add_image_size( 'landscape-post-image', 1200, 900 );
     add_image_size( 'small-horizontal', 150, 100, true ); // width, height, crop
     add_image_size( 'small-thumbnail', 150, 150, true ); // width, height, crop
     add_image_size( 'medium-horizontal', 320, 213, true ); // width, height, crop
@@ -205,7 +218,7 @@ function wpdocs_theme_add_editor_styles() {
 add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
 
 add_action( 'wp_enqueue_scripts', 'site_scripts' );
- 
+
 function site_scripts() {
     wp_enqueue_script('masonry');
     wp_enqueue_script( 'site-script', get_template_directory_uri() . '/js/site-script.js', array(), false, true );
@@ -217,7 +230,7 @@ add_filter( 'excerpt_length', function($length) {
 } );
 
 if( function_exists('acf_add_options_page') ) {
-  
+
   acf_add_options_page(array(
     'page_title'  => 'Menheer Theme General Settings',
     'menu_title'  => 'Menheer Theme Settings',
@@ -231,7 +244,7 @@ if( function_exists('acf_add_options_page') ) {
     'menu_title'  => 'Header',
     'parent_slug' => 'menheer-theme-general-settings',
   ));
-  
+
   acf_add_options_sub_page(array(
     'page_title'  => 'Header',
     'menu_title'  => 'Header',
@@ -243,13 +256,13 @@ if( function_exists('acf_add_options_page') ) {
     'menu_title'  => 'Featured posts',
     'parent_slug' => 'menheer-theme-general-settings',
   ));
-  
+
   acf_add_options_sub_page(array(
     'page_title'  => 'Theme Footer Settings',
     'menu_title'  => 'Footer',
     'parent_slug' => 'menheer-theme-general-settings',
   ));
-  
+
 }
 
 
