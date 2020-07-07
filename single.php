@@ -14,7 +14,6 @@ update_field('number_of_views', $count);
 			while ( have_posts() ) : the_post();
 				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
 					<div class="col-sm-8 offset-sm-2 blog-main">
 						<header class="entry-header">
 							<div class="categories">
@@ -37,7 +36,7 @@ update_field('number_of_views', $count);
 
 						</header>
 					</div>
-					<div class="col-sm-8 offset-sm-2 blog-main">
+					<div class="col-8 offset-sm-2 blog-main">
 						<div class="entry-content">
 							<?php
 							the_content(

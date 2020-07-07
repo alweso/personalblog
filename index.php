@@ -1,6 +1,6 @@
-<?php 
+<?php
 /**
-* Template Name: Front Page
+* Template Name: Index Page
 * Template Post Type: page
 * @package WordPress
 * @subpackage personal-blog
@@ -10,27 +10,22 @@
 get_header(); ?>
 <div class="container">
 <div class="row">
-<div class="col-sm-8 blog-grid-3">
+<div class="col-sm-8">
 	<header class="page-header">
-		<?php
-		the_archive_title( '<h1 class="page-title mt-4 mb-4">', '</h1>' );
-		?> 
-		<h5><?php 
-           if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); 
-?></h5>
+		<?php the_archive_title( '<h1 class="page-title mt-4 mb-4">', '</h1>' ); ?>
+		<h5>
+			<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?>
+		</h5>
 	</header><!-- .page-header -->
 	<div class="row">
 	<?php
     $args = array(
         'post_type' => 'post'
     );
+    $post_query = new WP_Query($args); 
+	?>
 
-    $post_query = new WP_Query($args);
-// 
-?>
-
-<div class="row allposts row-eq-height">
-	dsddsds
+<div class="row">
 			<?php
 			while ( have_posts() ) :
 				the_post();
@@ -44,12 +39,9 @@ get_header(); ?>
 			?>
 		</div>
 	</div>
-
-	
 	<h2><?php the_posts_pagination(); ?></h2>
 </div><!-- /.blog-main -->
- <?php get_sidebar(); ?> 
+ <?php get_sidebar(); ?>
 </div> <!-- / .row -->
 </div> <!-- / .container -->
 <?php get_footer(); ?>
-
