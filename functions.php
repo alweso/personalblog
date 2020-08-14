@@ -188,7 +188,7 @@ function wpdocs_theme_setup() {
 
     // Add featured image sizes
     add_image_size( 'hero', 2880, 1500 );
-    add_image_size( 'landscape-post-image', 1200, 900 );
+    add_image_size( 'landscape-post-image', 1200, 900, true );
     add_image_size( 'small-horizontal', 150, 100, true ); // width, height, crop
     add_image_size( 'small-thumbnail', 150, 150, true ); // width, height, crop
     add_image_size( 'medium-horizontal', 320, 213, true ); // width, height, crop

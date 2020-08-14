@@ -12,8 +12,9 @@ Text Domain: personal-blog
 /*bootstrap override
 */
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Oswald&display=swap&subset=cyrillic,cyrillic-ext,vietnamese');
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -64,22 +65,22 @@ $secondary-color: #142f56;
 $medium-grey: #5f5f5f;
 $light-grey: #b6b6b6;
 /* -------------------- general -------------------------------- */
-body {font-size: 16px;font-family: "Open Sans";line-height: 1.3em;background:#eef2f5;}
+body {font-size: 16px;font-family: "Lato";line-height: 1.3em;background:#eef2f5;}
 // body {   background: url('images/background.jpg');
 //     background-size: cover;
 //     background-attachment: fixed;}
 body {   background: url('images/paper.png');
     background-repeat: repeat;
     background-attachment: fixed;}
-h1 {font-size: 3.3em; font-family: "Open Sans";}
-h2, h2.elementor-heading-title {font-size: 1.875em; font-family: "Open Sans";}
-h3 {font-size: 2.1875em; font-family: "Open Sans";}
-h4 {font-size: 1.625em; font-family: "Poppins";margin-bottom:20px;font-weight:800;}
-h5 {font-size: 1.25; font-family: "Poppins";font-weight:800;}
-h6 {font-size: 0.875em; font-family: "Open Sans";}
+h1 {font-size: 3.3em; font-family: "Montserrat";}
+h2, h2.elementor-heading-title {font-size: 1.875em;}
+h3 {font-size: 2.1875em;}
+h4 {font-size: 1.625em;margin-bottom:20px;}
+h5 {font-size: 1.25;}
+h6 {font-size: 0.875em; }
 
-h1,h2,h3,h4 {font-family: "Poppins";font-weight:800;}
-p {}
+h1,h2,h3,h4 {font-family: "Lato";font-weight:600;}
+p {font-family: "Lora";}
 a {color: $base-color}
 h4 a {color: #364b62}
 span {}
@@ -318,6 +319,224 @@ blockquote {margin: 1.5em 0;
     .wpp-post-stats {
       font-size: 13px;
       color: #797979;
+    }
+  }
+}
+
+
+
+
+
+
+/* --------------------------------------------------- Elementor Awesomesauce styles - to be put in the plugin later on --------------------------------- */
+
+.awesomesauce-post-block {
+  .big-wrapper {
+    .category {
+      margin-bottom: 5px;
+    }
+    .news-title {
+      font-size: 18px;
+      margin-bottom: 5px;
+      line-height: 20px;
+    }
+
+    .author {
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .author-avatar img {
+      height: 30px;
+      width: 30px;
+      border-radius: 100%;
+    }
+    .wrapper {
+      padding: 10px;
+    }
+    .comments-views-date {
+      color: grey;
+      // font-size: 13px;
+      font-size: 13px;
+      i {
+        margin-right: 3px;
+      }
+
+      .comments {
+        margin-right: 9px;
+      }
+
+      .date {
+        float: right;
+      }
+    }
+  }
+
+
+  &.style-1 {
+    .big-wrapper {
+      display:grid;grid-template-columns:5fr 4fr;grid-template-rows:1fr 1fr 1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:5;position:relative;
+        a {
+          display:block;background-size:cover !important;height:100%;
+        }
+        .news-title {color:#fff;font-size: 30px;line-height: 32px;}
+        .description {
+          position:relative;
+          p {
+            color: #fff;
+          }
+          .description-inner {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 100px 10px 10px 10px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+          }
+        }
+      }
+      &--small {
+        .thumbnail {
+          width:145px;float:left;margin-right:10px;
+        }
+      }
+    }
+  }
+  &.style-2 {
+    .big-wrapper {
+      display:grid;grid-template-columns:11fr 11fr 8fr 8fr;grid-template-rows:1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:3;position:relative;grid-column-start: 1;grid-column-end: 3;
+        a {
+          display:block;background-size:cover !important;height:100%;
+        }
+        .news-title {color:#fff;font-size: 30px;line-height: 32px;}
+        .description {
+          position:relative;
+          h4, p {
+            color: #fff;
+          }
+          .description-inner {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 100px 10px 10px 10px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+          }
+        }
+      }
+      &--small {
+        div.thumbnail {
+          // width:100%;
+        }
+      }
+    }
+  }
+  &.style-3 {
+    .big-wrapper {
+      display:grid;grid-template-columns:8fr 8fr 11fr 11fr;grid-template-rows:1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:3;position:relative;grid-column-start: 3;grid-column-end: 5;
+        a {
+          display:block;background-size:cover !important;height:100%;
+        }
+        .news-title {color:#fff;font-size: 30px;line-height: 32px;}
+        .description {
+          position:relative;
+          p {
+            color: #fff;
+          }
+          .description-inner {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 100px 10px 10px 10px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+          }
+        }
+      }
+      &--small {
+        div.thumbnail {
+          // width:100%;
+        }
+      }
+    }
+  }
+  &.style-4 {
+    .big-wrapper {
+      display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:3;position:relative;grid-column-start: 3;grid-column-end: 4;
+        &:first-of-type {
+          grid-column-start: 1;grid-column-end:3;
+        }
+        &:nth-of-type(2) {
+          grid-column-start: 3;grid-column-end:5;
+        }
+        a.thumbnail {
+          display:block;background-size:cover;height:100%;
+        }
+        // .description {position:absolute;bottom:0;width:100%;background:red;}
+      }
+      &--small {
+        div.thumbnail {
+          // width:100%;
+        }
+      }
+    }
+  }
+  &.style-5 {
+    .big-wrapper {
+      display:grid;grid-template-columns:1fr;
+    }
+    .wrapper {
+      &--small {
+        .thumbnail {
+          width:200px;float:left;margin-right:10px;
+        }
+      }
+    }
+  }
+
+  &.style-6 {
+    .big-wrapper {
+      display:grid; grid-template-columns:1fr 1fr 1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 15px;
+        position:relative;
+        a {
+          display:block;background-size:cover !important;
+        }
+      }
+      &--small {
+
+      }
     }
   }
 }
