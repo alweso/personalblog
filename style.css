@@ -417,9 +417,6 @@ button:hover:before {
   width: 30px;
   border-radius: 100%;
 }
-.awesomesauce-post-block .big-wrapper .wrapper {
-  padding: 10px;
-}
 .awesomesauce-post-block .big-wrapper .comments-views-date {
   color: grey;
   font-size: 13px;
