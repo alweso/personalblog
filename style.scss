@@ -333,6 +333,9 @@ blockquote {margin: 1.5em 0;
 .awesomesauce-post-block {
 
   .big-wrapper {
+
+    display: grid;
+
     .category {
       margin-bottom: 5px;
     }
@@ -538,4 +541,28 @@ blockquote {margin: 1.5em 0;
       }
     }
   }
+
+  &.post-grid {
+    .big-wrapper {
+      display:grid;
+    }
+  }
+
+  &.post-list {
+    .big-wrapper {
+      .wrapper {
+        &--big {
+          display:grid;grid-template-columns: 33fr 66fr;column-gap: 10px;
+        }
+      }
+    }
+  }
+}
+
+.post-list-tabs {
+    .wrapper {
+      &--big {
+        display:grid;grid-template-columns: 33fr 66fr;column-gap: 10px;
+      }
+    }
 }

@@ -400,6 +400,9 @@ button:hover:before {
 }
 
 /* --------------------------------------------------- Elementor Awesomesauce styles - to be put in the plugin later on --------------------------------- */
+.awesomesauce-post-block .big-wrapper {
+  display: grid;
+}
 .awesomesauce-post-block .big-wrapper .category {
   margin-bottom: 5px;
 }
@@ -611,6 +614,20 @@ button:hover:before {
 .awesomesauce-post-block.style-6 .wrapper--big a {
   display: block;
   background-size: cover !important;
+}
+.awesomesauce-post-block.post-grid .big-wrapper {
+  display: grid;
+}
+.awesomesauce-post-block.post-list .big-wrapper .wrapper--big {
+  display: grid;
+  grid-template-columns: 33fr 66fr;
+  column-gap: 10px;
+}
+
+.post-list-tabs .wrapper--big {
+  display: grid;
+  grid-template-columns: 33fr 66fr;
+  column-gap: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
