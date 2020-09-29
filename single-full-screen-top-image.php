@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * Template Name: Full screen top image
 * Template Post Type: post
@@ -10,12 +10,12 @@
 
 <?php
 get_header();
-if ( have_posts() ) { 
+if ( have_posts() ) {
 	while ( have_posts() ) : the_post();
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' ); ?>
-			<div class="header-wrap" style="background: url('<?php echo $backgroundImg[0]; ?>');height:100vh;position:relative;">
+			<div class="header-wrap" style="background: url('<?php echo esc_url($backgroundImg[0]); ?>');height:100vh;position:relative;">
 				<div class="dark-background" style="">
 
 					<header class="entry-header" style="display: table-cell;
@@ -42,7 +42,7 @@ if ( have_posts() ) {
 			<div class="row">
 				<div class="col-sm-8 offset-sm-2 blog-main">
 
-<!-- 
+<!--
 	<?php the_author_meta( 'description' ); ?> -->
 
 
@@ -82,7 +82,7 @@ if ( have_posts() ) {
 
 <?php
 endwhile;
-} 
+}
 ?>
 <?php posts_nav_link(); ?>
 </div><!-- /.blog-main -->

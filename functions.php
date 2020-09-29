@@ -139,7 +139,7 @@ register_nav_menus( array(
 
 //   return $excerpt;
 // }
-add_filter('acf/validate_value/key='.$field_key, 'unique_repeater_sub_field', 20, 4);
+// add_filter('acf/validate_value/key='.$field_key, 'unique_repeater_sub_field', 20, 4);
 
 function content($limit) {
     $content = explode(' ', get_the_content(), $limit);
