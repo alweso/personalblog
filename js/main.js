@@ -34,7 +34,7 @@ jQuery(document).ready(function(){
 jQuery(window).load(function() {
 	/* ------------------------ this will go to video plugin later on -------------------- */
 
-	/*JS FOR SCROLLING THE ROW OF THUMBNAILS*/ 
+	/*JS FOR SCROLLING THE ROW OF THUMBNAILS*/
   // jQuery('.vid-item').each(function(index){
   //   jQuery(this).on('click', function(){
   //     var current_index = index+1;
@@ -54,4 +54,29 @@ jQuery(window).load(function() {
   	var updatedString2 = link2.substring(17);
 	jQuery('#vid_frame').attr('src', 'https://youtube.com/embed/' + updatedString2 + '?autoplay=1&rel=0&showinfo=0&autohide=1');
   });
+
+	jQuery(document).ready(function(){
+//   jQuery('.owl-carousel').owlCarousel({
+//     loop:true,
+//     margin:10,
+//     nav:true,
+//     responsive:{
+//         0:{
+//             items:1
+//         },
+//         600:{
+//             items:3
+//         },
+//         1000:{
+//             items:4
+//         }
+//     }
+// });
+
+// jQuery( window ).on( 'elementor/frontend/init', function() {
+//     elementorFrontend.hooks.addAction( 'frontend/element_ready/awesomesauce.default', WidgetAwesomesauceHandler, function(){
+//         $(".owl-carousel").owlCarousel();
+//     } );
+//   } );
+});
 });

@@ -11,9 +11,10 @@ Text Domain: personal-blog
 
 /*bootstrap override
 */
-
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Oswald&display=swap&subset=cyrillic,cyrillic-ext,vietnamese');
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,800,900&display=swap');
+//
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -62,24 +63,24 @@ $base-color: #58a89d;
 $base-color-darker: #2f6b71;
 $secondary-color: #142f56;
 $medium-grey: #5f5f5f;
-$light-grey: #b6b6b6;  
+$light-grey: #b6b6b6;
 /* -------------------- general -------------------------------- */
-body {font-size: 16px;font-family: "Open Sans";line-height: 1.3em;background:#eef2f5; }
+body {font-size: 16px;font-family: "Lato";line-height: 1.3em;background:#eef2f5;}
 // body {   background: url('images/background.jpg');
 //     background-size: cover;
 //     background-attachment: fixed;}
 body {   background: url('images/paper.png');
     background-repeat: repeat;
     background-attachment: fixed;}
-h1 {font-size: 3.3em; font-family: "Open Sans";}
-h2, h2.elementor-heading-title {font-size: 1.875em; font-family: "Open Sans";}
-h3 {font-size: 2.1875em; font-family: "Open Sans";}
-h4 {font-size: 1.625em; font-family: "Poppins";margin-bottom:20px;font-weight:800;}
-h5 {font-size: 1.25; font-family: "Poppins";font-weight:800;}
-h6 {font-size: 0.875em; font-family: "Open Sans";}
+h1 {font-size: 3.3em; font-family: "Montserrat";}
+h2, h2.elementor-heading-title {font-size: 1.875em;}
+h3 {font-size: 2.1875em;}
+h4 {font-size: 1.625em;margin-bottom:20px;}
+h5 {font-size: 1.25;}
+h6 {font-size: 0.875em; }
 
-h1,h2,h3,h4 {font-family: "Poppins";font-weight:800;}
-p {}
+h1,h2,h3,h4 {font-family: "Lato";font-weight:600;}
+p {font-family: "Lora";}
 a {color: $base-color}
 h4 a {color: #364b62}
 span {}
@@ -128,98 +129,7 @@ blockquote {margin: 1.5em 0;
         transform:scale(4);
         transition: transform .3s ease-out;
       }
-      /* ------------------------------------- search form in menu ------------------------------- */
-      .search-form {
-        position: relative;
-        width:230px;
-        label {margin-bottom:0}
-        button {    position: absolute;
-          right: 30px;
-          z-index: 1;
-          color: $base-color;
-          background: transparent;}
-        }
-        /* -------------------------------- table design -------------------------------------------- */
-        table {
-          border: 1px solid #ccc;
-          border-collapse: collapse;
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          table-layout: fixed;
-        }
 
-        table caption {
-          font-size: 1.5em;
-          margin: .5em 0 .75em;
-        }
-
-        table tr {
-          background-color: #f8f8f8;
-          border: 1px solid #ddd;
-          padding: .35em;
-        }
-
-        table th,
-        table td {
-          padding: .625em;
-          text-align: center;
-        }
-
-        table th {
-          font-size: .85em;
-          letter-spacing: .1em;
-          text-transform: uppercase;
-        }
-
-        @media screen and (max-width: 600px) {
-          table {
-            border: 0;
-          }
-
-          table caption {
-            font-size: 1.3em;
-          }
-
-          table thead {
-            border: none;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            width: 1px;
-          }
-
-          table tr {
-            border-bottom: 3px solid #ddd;
-            display: block;
-            margin-bottom: .625em;
-          }
-
-          table td {
-            border-bottom: 1px solid #ddd;
-            display: block;
-            font-size: .8em;
-            text-align: right;
-          }
-
-          table td::before {
-/*
-* aria-label has no advantage, it won't be read inside a table
-content: attr(aria-label);
-*/
-content: attr(data-label);
-float: left;
-font-weight: bold;
-text-transform: uppercase;
-}
-
-table td:last-child {
-  border-bottom: 0;
-}
-}
 /* ------------------------------- Elementor --------------------------------- */
 .elementor-widget-heading .elementor-heading-title {font-family: Oswald !important;color: #212529 !important}
 
@@ -292,169 +202,13 @@ table td:last-child {
 
 }
 
-/* ------------------------------------------- secondary (category) menu ------------------------------ */
-
-.category-menu {
-  background: white;
-  .navbar-nav {
-    display: inline-block;
-    li {
-      display: inline-block;
-      a {
-        color: black;
-      }
-    }
-  }
-}
 
 .wp-caption, .wp-caption-text,  .screen-reader-text, .gallery-caption, .bypostauthor {display: block;}
 .alignright {float: right;margin-left: 20px;margin-bottom:10px;}
-.alignleft {float: left;margin-right: 20px;margin-bottom:10px;} 
-.aligncenter {margin: 0 auto;} 
+.alignleft {float: left;margin-right: 20px;margin-bottom:10px;}
+.aligncenter {margin: 0 auto;}
 
 
-/* -------------------- single post styling --------------------------- */
-.post-template-single-full-screen-top-image, .post-template-single-full-width-top-image {
-  .main-header {
-    .navbar {
-      background: transparent !important;
-    }
-    background: transparent;
-    position: relative;
-    z-index: 1;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    a.nav-link {
-      font-weight: 400;
-      color: #fff !important;
-    }
-  }
-
-  .header-wrap {
-    margin-top: -54px;background-attachment:fixed !important;
-    .dark-background {
-      position: absolute;height: 100%;width:100%;top:0;display: table;
-      /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.99+0,0.4+100;Neutral+Density */
-      background: -moz-linear-gradient(top,  rgba(61, 64, 74,0.85) 0%, rgba(61, 64, 74,0.6) 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(top,  rgba(61, 64, 74, 0.85) 0%,rgba(61, 64, 74,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom,  rgba(61, 64, 74,0.85) 0%,rgba(61, 64, 74,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-
-    } 
-  }
-}
-
-.post-template-default {
-  // background: whitesmoke;
-  .feature-image img {
-    // margin-left: calc(25% - 25vw);
-    // margin-right: calc(25% - 25vw);
-  }
-  .entry-title {
-    border-left: 5px solid $base-color;
-    padding-left: 29px;
-    margin-top: 20px;
-    font-size: 36px;
-  }
-  .post-container {
-    background: #fff;
-    padding-top: 35px;
-  }
-}
-.single-post {
-  .post-container {
-    margin-top: 20px;
-    img {max-width: 100%;height:auto;}
-  }
-  .entry-header .wp-post-image {
-    margin-bottom: 15px;width: 100%;height: auto;
-  }
-  .post-categories {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
-      display: inline-block;
-      margin-right: 15px;
-    }
-  }
-
-  .author-and-date {
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6;
-    margin-bottom: 20px;
-    font-size: 0.85em;
-    img {
-      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-      filter: grayscale(100%);
-    }
-    &--on-transparent {
-      border: none;
-      color: #fff;
-      a {
-        color: #fff;
-        font-weight: bold;
-      }
-      img {
-        border-radius: 100%;
-        margin-right: 10px;
-        border: 2px solid #fff;
-        -webkit-box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.56);
-        -moz-box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.56);
-        box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.56);
-      }
-    }
-  }
-
-  .heateor_sss_sharing_container.heateor_sss_horizontal_sharing {
-    margin-bottom: 35px;
-    border-top: 1px solid $light-grey;
-    padding-top: 20px;
-    .heateor_sss_sharing_title {
-      font-weight: 600 !important;
-      margin-bottom: 10px;
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-  }
-}
-
-/* --------------------------- gallery lightbox plugin ---------------------------------- */
-
-@media (min-width: 1200px) {
-  // .wp-block-gallery {margin-left:-65px;margin-right:-130px;}
-  // .wp-block-gallery {margin-left:-65px;margin-right:-130px;}
-  .wp-block-gallery {        margin-left: calc(25% - 25vw);
-    margin-right: calc(25% - 25vw);
-    width: auto;
-    max-width: 1000%;}
-
-
-
-  }
-
-  // @media (min-width: 1600px) {
-    //   .wp-block-responsive-lightbox-gallery {margin-left:-65px;margin-right:-130px;}
-    // }
-
-
-    /* --------------------------- widgets --------------------------------------- */
-    .sidebar-module {    margin-bottom: 20px;
-      border-bottom: 1px solid #e2e2e2;
-      padding-bottom: 20px;}
-
-      /* calendar widget */
-      .widget_calendar {float: left;}
-      #wp-calendar {width: 100%; }
-      #wp-calendar caption { text-align: right; color: #333; font-size: 12px; margin-top: 10px; margin-bottom: 15px; }
-      #wp-calendar thead { font-size: 10px; }
-      #wp-calendar thead th { padding-bottom: 10px; }
-      #wp-calendar tbody { color: #aaa; }
-      #wp-calendar tbody td { background: #f5f5f5; border: 1px solid #fff; text-align: center; padding:8px;}
-      #wp-calendar tbody td:hover { background: #fff; }
-      #wp-calendar tbody .pad { background: none; }
-      #wp-calendar tfoot #next { font-size: 10px; text-transform: uppercase; text-align: right; }
-      #wp-calendar tfoot #prev { font-size: 10px; text-transform: uppercase; padding-top: 10px; }
 
       /* --------------------------- comment-form --------------------------- */
 
@@ -469,84 +223,10 @@ table td:last-child {
         }
       }
 
-
-      /* -------------------- youtube gallery in post ------------------------------ */
-      .epyt-gallery-thumb {}
-      .epyt-gallery-title {text-align: left; padding: 10px 0 !important; font-weight:600;color: $medium-grey}
-
       /* ------------------------------- Wordpress elements ---------------------------------------- */
 
       .entry-title {margin-bottom: 20px;}
 
-      /* --------------------------------------- site footer ------------------------------------------------- */
-
-      footer.site-footer {
-        min-height: 300px;
-        padding-top: 50px;
-        background: #294e51;
-        h4, a {
-          color: white;
-        }
-      }
-
-/* =======================================================================================================
-==========================================================================================================
-==========================================================================================================
-=========================================== BRAND NEW BEAUTIFUL CODE =====================================
-==========================================================================================================
-==========================================================================================================
-======================================================================================================== */
-
-/* ================================ POST FORMATS ON ARCHIVE PAGE ======================================== */
-
-.category-posts-internal, .wpp-list.wpp-list-with-thumbnails {
-  padding: 0;
-  list-style: none;
-}
-
-.tagcloud {
-  font-family: Poppins;
-  font-weight: 900;
-  .tag-cloud-link {
-    margin-right: 10px;
-    margin-bottom: 2px;
-    display: inline-block;
-    color: #898989;
-  }
-}
-
-
-.cat-post-date {
-  font-size: 12px;
-  color: #797979;
-  padding-left: 16px;
-  position: relative;
-  &:before {
-    font-family: "FontAwesome";
-    content: "\f017";
-    font-size: 11px;
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: -2px;
-  }
-}
-
-.cat-post-title {
-     color: black;
-      font-weight: bold;
-      display: block;
-      line-height: 18px;
-      font-size: 14px;
-      margin-bottom: 6px;
-      }
-
-      /* --- */
-
-.frontpage-main-slider {
-  padding: 10px;
-  background: white;
-}
 // popular posts
 .most-read {
   .wpp-list {
@@ -554,7 +234,7 @@ table td:last-child {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    counter-reset: postnumber;  
+    counter-reset: postnumber;
   }
   li {
     flex: 1 0 100%;
@@ -602,7 +282,7 @@ table td:last-child {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    counter-reset: postnumber;  
+    counter-reset: postnumber;
   }
   li {
     flex: 1 0 100%;
@@ -643,380 +323,246 @@ table td:last-child {
   }
 }
 
-.sidebar-category-posts {
-  .category-posts-internal {
-    display: flex;
-    flex-wrap: wrap;
-    li {
-      background: white;
-      margin-bottom: 10px;
-      flex: 1 0 100%;
-      padding: 10px;
-      .cat-post-thumbnail {
-        float: left;
-        margin-right: 10px;
-      }
-      .cat-post-title {
-        color: black;
-        /* float: right; */
-        font-weight: 600;
-        display: block;
-        /* padding-left: 10px; */
-        font-size: 14px;
-        line-height: 17px;
-      }
-      .cat-post-date {
-        font-size: 13px;
-        color: #797979;
-      }
-    }
-  }
-}
 
-.sidebar-posts-version-2 {
-  .category-posts-internal {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    background: black;
-    li {
-      background: #303030;
-      margin-bottom: 10px;
-      flex: 1 0 100%;
-      .cat-post-thumbnail {
-        float: left;
-        margin-right: 10px;
-      }
-      .cat-post-title {
-        color: black;
-        font-weight: 600;
-        display: block;
-        font-size: 14px;
-        line-height: 17px;
-        color: #e3e3e3;
-        padding-top: 10px;
-      }
-      .cat-post-date {
-        font-size: 13px;
-        color: #a3a3a3;
-      }
-    }
-  }
-}
 
-.news-version-1 {
-  ul {
-    padding: 10px;
-    background: white;
-  }
-  .cat-post-item:first-of-type {
-    position: relative;
-    margin-bottom: 20px;
-    .cat-post-title {
-      position: absolute;
-      left: 0;
-      bottom: 41px;
-      background: rgba(0,0,0,.1);
-      color: white;
-      padding: 31px 10px 10px 10px;
-      background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
-      background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
-      font-family: Poppins;
-      font-weight: 600;
-      text-shadow: 3px 2px 3px rgba(0,0,0,0.34);
-    }
-    .cat-post-date {
-      position: absolute;
-      bottom: 0;
-      color: white;
-      left: 0;
-      width: 100%;
-      background: #343535;
-      padding: 10px;
-    }
-  }
-  .cat-post-item:not(:first-of-type) {
-    margin-bottom: 20px;
-    .cat-post-title {
 
-    }
-    .cat-post-date {
 
-    }
-  }
 
-}
+/* --------------------------------------------------- Elementor Awesomesauce styles - to be put in the plugin later on --------------------------------- */
 
-.news-version-3 {
-  ul {
-    list-style: none;
-    padding: 0;
+.awesomesauce-post-block {
+
+  .big-wrapper {
+
     display: grid;
-    grid-gap: 15px;
-    grid-template-columns: 3fr 4fr;
-    // grid-template-rows: 1fr 1fr 1fr 1fr;
-  }
-  .post-title {
-       color: black;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-  }
 
-  h5 {
-       i {
-      margin-right: 10px;
+    .category {
+      margin-bottom: 5px;
     }
-  }
-  .cat-post-item:first-of-type {
-    grid-column: 1/2;
-    grid-row: 1/6;
-    background: white;padding: 10px;
-  }
-  .cat-post-item:not(:first-of-type) {
-    padding: 10px;background: white;
-    img {
-      width: 100px;
-    float: left;
-    margin-right: 15px;
-    }
-    p {
-      display: none;
-    }
-  }
-}
-.frontpage-recent-posts {
-  .category-posts-internal {
-    display: flex;
-    flex-wrap: wrap;
-    li {
-      background: white;
-      margin-bottom: 20px;
-      flex: 1 0 calc(33.33% - 30px);
-      margin: 0 10px 20px 10px;
-      padding: 10px;
-      .cat-post-title {
-        color: black;
-        font-weight: bold;
-        display: block;
-        margin-top: 8px;
-        line-height: 18px;
-        font-size: 14px;
-        margin-bottom: 6px;
-      }
-      .cat-post-date {
-        font-size: 13px;
-        color: #797979;
-      }
-    }
-  }
-}
-
-.video-posts-version-1 {
-  .category-posts-internal {
-    display: flex;
-    flex-wrap: wrap;
-    background: white;
-    padding: 10px;
-  }
-  li {
-    flex: 1 0 calc(50% - 30px);
-    margin: 0 10px 20px 10px;
-    position: relative;
-    height: 187px;
-    overflow: hidden;
-    &:before {
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      font-size: 40px;
-      color: white;
-      line-height: 40px;
-      margin-left: -20px;
-      margin-top: -20px;
-      z-index: 1;
-    }
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-      background: rgba(0,0,0,0.3);
-    }
-    .cat-post-title {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      display: block;
-      padding: 10px;
-      color: white;
-      z-index:1;
-      font-weight: 600;
-      font-family: Lato;
-      text-shadow: 3px 2px 3px rgba(0,0,0,0.34);
+    .news-title {
       font-size: 18px;
+      margin-bottom: 5px;
+      line-height: 20px;
+    }
+
+    .author {
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .author-avatar img {
+      height: 30px;
+      width: 30px;
+      border-radius: 100%;
+    }
+
+    .comments-views-date {
+      color: grey;
+      // font-size: 13px;
+      font-size: 13px;
+      i {
+        margin-right: 3px;
+      }
+
+      .comments {
+        margin-right: 9px;
+      }
+
+      .date {
+        float: right;
+      }
+    }
+  }
+
+
+  &.style-1 {
+    .big-wrapper {
+      display:grid;grid-template-columns:5fr 4fr;grid-template-rows:1fr 1fr 1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:5;position:relative;
+        a {
+          display:block;background-size:cover !important;height:100%;
+        }
+        .news-title {color:#fff;font-size: 30px;line-height: 32px;}
+        .description {
+          position:relative;
+          p {
+            color: #fff;
+          }
+          .description-inner {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 100px 10px 10px 10px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+          }
+        }
+      }
+      &--small {
+        .thumbnail {
+          width:145px;float:left;margin-right:10px;
+        }
+      }
+    }
+  }
+  &.style-2 {
+    .big-wrapper {
+      display:grid;grid-template-columns:11fr 11fr 8fr 8fr;grid-template-rows:1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:3;position:relative;grid-column-start: 1;grid-column-end: 3;
+        a {
+          display:block;background-size:cover !important;height:100%;
+        }
+        .news-title {color:#fff;font-size: 30px;line-height: 32px;}
+        .description {
+          position:relative;
+          h4, p {
+            color: #fff;
+          }
+          .description-inner {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 100px 10px 10px 10px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+          }
+        }
+      }
+      &--small {
+        div.thumbnail {
+          // width:100%;
+        }
+      }
+    }
+  }
+  &.style-3 {
+    .big-wrapper {
+      display:grid;grid-template-columns:8fr 8fr 11fr 11fr;grid-template-rows:1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:3;position:relative;grid-column-start: 3;grid-column-end: 5;
+        a {
+          display:block;background-size:cover !important;height:100%;
+        }
+        .news-title {color:#fff;font-size: 30px;line-height: 32px;}
+        .description {
+          position:relative;
+          p {
+            color: #fff;
+          }
+          .description-inner {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 100px 10px 10px 10px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+          }
+        }
+      }
+      &--small {
+        div.thumbnail {
+          // width:100%;
+        }
+      }
+    }
+  }
+  &.style-4 {
+    .big-wrapper {
+      display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-row-start:1;grid-row-end:3;position:relative;grid-column-start: 3;grid-column-end: 4;
+        &:first-of-type {
+          grid-column-start: 1;grid-column-end:3;
+        }
+        &:nth-of-type(2) {
+          grid-column-start: 3;grid-column-end:5;
+        }
+        a.thumbnail {
+          display:block;background-size:cover;height:100%;
+        }
+        // .description {position:absolute;bottom:0;width:100%;background:red;}
+      }
+      &--small {
+        div.thumbnail {
+          // width:100%;
+        }
+      }
+    }
+  }
+  &.style-5 {
+    .big-wrapper {
+      display:grid;grid-template-columns:1fr;
+    }
+    .wrapper {
+      &--small {
+        .thumbnail {
+          width:200px;float:left;margin-right:10px;
+        }
+      }
+    }
+  }
+
+  &.style-6 {
+    .big-wrapper {
+      display:grid; grid-template-columns:1fr 1fr 1fr 1fr;
+    }
+    .wrapper {
+      &--big {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 15px;
+        position:relative;
+        a {
+          display:block;background-size:cover !important;
+        }
+      }
+      &--small {
+
+      }
+    }
+  }
+
+  &.post-grid {
+    .big-wrapper {
+      display:grid;
+    }
+  }
+
+  &.post-list {
+    .big-wrapper {
+      .wrapper {
+        &--big {
+          display:grid;grid-template-columns: 33fr 66fr;column-gap: 10px;
+        }
+      }
     }
   }
 }
 
-.elementor-widget-wp-widget-recent-comments {
-  ul {
-    padding: 0;
-    list-style: none;
-  }
-  .recentcomments {
-    width: 100%;
-    margin: 10px auto;
-    background: #fff;
-    padding: 11px;
-    text-align: left;
-    /* font-weight: 900; */
-    color: #000;
-    /* font-family: arial; */
-    position: relative;
-    border-radius: 5px;
-    &:before {
-      content: "";
-      width: 0px;
-      height: 0px;
-      position: absolute;
-      border-left: 10px solid #ffffff;
-      border-right: 10px solid transparent;
-      border-top: 10px solid #ffffff;
-      border-bottom: 10px solid transparent;
-      right: -20px;
-      top: 15px;
+.post-list-tabs {
+    .wrapper {
+      &--big {
+        display:grid;grid-template-columns: 33fr 66fr;column-gap: 10px;
+      }
     }
-  }
 }
-
-/* --------------------- clean and nice this time -------------------------------- */
-
-/* first big item rest small */
-
-.news-section-version-1 {
-  ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-gap: 15px;
-     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-  }
-  .post-title {
-       color: black;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  h5 {
-       i {
-      margin-right: 10px;
-    }
-  }
-  .cat-post-item:first-of-type {
-    grid-column: 1/2;
-    grid-row: 1/4;
-    background: white;padding: 10px;
-  }
-  .cat-post-item:not(:first-of-type) {
-    padding: 10px;background: white;
-    img {
-      width: 100px;
-    float: left;
-    margin-right: 15px;
-    }
-    p {
-      display: none;
-    }
-  }
-}
-
-/* frontpage recent posts */
-
-.news-section-version-2 {
-  ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-gap: 15px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-  .post-title {
-       color: black;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  h5 {
-       i {
-      margin-right: 10px;
-    }
-  }
-  .cat-post-item:first-of-type {
-    grid-column: 1/3;
-    grid-row: 1/3;
-    background: white;padding: 10px;
-        p, a, span {padding: 10px;display:block;}
-
-  }
-  .cat-post-item:not(:first-of-type) {
-    padding: 10px;background: white;
-    img {
-      width: 100%;
-    float: left;
-    margin-right: 15px;
-    }
-  }
-}
-
-
-/* ----- */
-.ekit-wid-con .post--tab {
-  display: block !important;
-}
-
-.tab__list {
-  display:inline-block;
-}
-
-span.tab__list__item {
-  display: inline-block !important;
-  // width: auto;
-}
-
-.tabItem {
- .tab__post--header {
-  height: 200px;
- }
-}
-
-/* --- frontpage section with slider ---- */
-
-// .elementor-element-ae24cf4 {
-//     background: #dee4ea;
-//     padding: 65px 0 65px 0;
-// }
-
-/* ---------------- masonry grid -------------------------------- */
-
-.grid-item { 
-  padding: 10px;
-  width: 400px;
-  img {
-    width: 100%;
-    position: relative;
-  } 
-}
-
