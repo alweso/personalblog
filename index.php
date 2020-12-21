@@ -19,25 +19,33 @@ get_header(); ?>
 			</header><!-- .page-header -->
 			<div class="row">
 				<?php
-				$args = array(
-					'post_type' => 'post'
+				$custom_query_args = array(
+					'post_type' => 'post',
+					'posts_per_page' => 10,
+					'post_status' => 'publish',
+					'ignore_sticky_posts' => true,
+					//'category_name' => 'custom-cat',
+					'order' => 'DESC', // 'ASC'
+					'orderby' => 'date' // modified | title | name | ID | rand
 				);
-				$post_query = new WP_Query($args);
+				$custom_query = new WP_Query( $custom_query_args );
 				?>
 
-				<div class="row">
-					<?php
-					while ( have_posts() ) :
-						the_post();
-						?>
-						<div class="col-xs-12 col-sm-4">
-							<?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
-						</div>
-						<?php
-						// End the loop.
-					endwhile;
-					?>
-				</div>
+				<?php if ( $custom_query->have_posts() ) : ?>
+					<div class="row">
+						<?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
+							<div class="col-3">
+								<?php get_template_part( 'template-parts/archive-post/content', get_post_format() ); ?>
+							</div>
+							<?php
+						endwhile; ?>
+					</div>
+					<?php wp_reset_postdata(); // reset the query
+				else:
+					echo '<p>'.__('Sorry, no posts matched your criteria.').'</p>';
+				endif; ?>
+
+
 			</div>
 			<h2><?php the_posts_pagination(); ?></h2>
 		</div><!-- /.blog-main -->

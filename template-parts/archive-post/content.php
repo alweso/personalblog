@@ -19,15 +19,5 @@
 		the_title( sprintf( '<h4 class="entry-title no-image"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h4>' );
 		?>
 	<?php endif ?>
-
-	</header><!-- .entry-header -->
-
-<!-- 	<div class="entry-content">
-		<?php if ( has_post_thumbnail() ) : 
-			echo excerpt(30); 
-		else :
-			echo excerpt(80); 
-		endif ?>
-	</div><!-- .entry-content --> -->
-	<?php get_template_part( 'template-parts/archive-post/author-comments-date', 'none' ); ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+	</header>
+</article>
