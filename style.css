@@ -395,47 +395,47 @@ button:hover:before {
 }
 
 /* --------------------------------------------------- Elementor Awesomesauce styles - to be put in the plugin later on --------------------------------- */
-.awesomesauce-post-block, .post-slider {
+.awesomesauce-post-block .big-wrapper, .post-slider .big-wrapper {
   display: grid;
 }
-.awesomesauce-post-block .wp-post-image, .awesomesauce-post-block .thumbnail > a, .post-slider .wp-post-image, .post-slider .thumbnail > a {
+.awesomesauce-post-block .big-wrapper .wp-post-image, .awesomesauce-post-block .big-wrapper .thumbnail > a, .post-slider .big-wrapper .wp-post-image, .post-slider .big-wrapper .thumbnail > a {
   border-radius: 5px !important;
 }
-.awesomesauce-post-block .widget-image, .post-slider .widget-image {
+.awesomesauce-post-block .big-wrapper .widget-image, .post-slider .big-wrapper .widget-image {
   overflow: hidden;
 }
-.awesomesauce-post-block .wp-post-image:hover, .post-slider .wp-post-image:hover {
+.awesomesauce-post-block .big-wrapper .wp-post-image:hover, .post-slider .big-wrapper .wp-post-image:hover {
   transform: scale(1.5);
   transition: transform 200ms ease-out;
 }
-.awesomesauce-post-block .category, .post-slider .category {
+.awesomesauce-post-block .big-wrapper .category, .post-slider .big-wrapper .category {
   margin-bottom: 5px;
 }
-.awesomesauce-post-block .news-title, .post-slider .news-title {
+.awesomesauce-post-block .big-wrapper .news-title, .post-slider .big-wrapper .news-title {
   font-size: 18px;
   margin-bottom: 5px;
   line-height: 20px;
 }
-.awesomesauce-post-block .author, .post-slider .author {
+.awesomesauce-post-block .big-wrapper .author, .post-slider .big-wrapper .author {
   font-size: 13px;
   margin-top: 4px;
 }
-.awesomesauce-post-block .author-avatar img, .post-slider .author-avatar img {
+.awesomesauce-post-block .big-wrapper .author-avatar img, .post-slider .big-wrapper .author-avatar img {
   height: 30px;
   width: 30px;
   border-radius: 100%;
 }
-.awesomesauce-post-block .comments-views-date, .post-slider .comments-views-date {
+.awesomesauce-post-block .big-wrapper .comments-views-date, .post-slider .big-wrapper .comments-views-date {
   color: grey;
   font-size: 13px;
 }
-.awesomesauce-post-block .comments-views-date i, .post-slider .comments-views-date i {
+.awesomesauce-post-block .big-wrapper .comments-views-date i, .post-slider .big-wrapper .comments-views-date i {
   margin-right: 3px;
 }
-.awesomesauce-post-block .comments-views-date .comments, .post-slider .comments-views-date .comments {
+.awesomesauce-post-block .big-wrapper .comments-views-date .comments, .post-slider .big-wrapper .comments-views-date .comments {
   margin-right: 9px;
 }
-.awesomesauce-post-block .comments-views-date .date, .post-slider .comments-views-date .date {
+.awesomesauce-post-block .big-wrapper .comments-views-date .date, .post-slider .big-wrapper .comments-views-date .date {
   float: right;
 }
 .awesomesauce-post-block.style-1 .big-wrapper, .post-slider.style-1 .big-wrapper {
