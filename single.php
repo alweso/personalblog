@@ -1,11 +1,21 @@
 <?php get_header(); ?>
 <?php
 // Get the current value.
+// $count = 0;
 $count = (int) get_field('number_of_views');
+// if ($count === NULL) {
+//   update_field('views', 0);
+//   // $views = '0';
+// }
 // Increase it.
 $count++;
 // Update with new value.
 update_field('number_of_views', $count);
+?>
+
+<?php
+// setPostViews(get_the_ID());
+gt_set_post_view(); 
 ?>
 <div class="container post-container">
 	<div class="row">
