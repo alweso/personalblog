@@ -95,7 +95,7 @@ function bootstrapstarter_widgets_init() {
 
 }
 add_action( 'widgets_init', 'bootstrapstarter_widgets_init' );
-add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio' ) );
+add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio' ) );
 add_theme_support( 'post-thumbnails', array( 'post', 'page' ) ); // Posts and Pages
 add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
@@ -221,15 +221,6 @@ add_action( 'after_setup_theme', 'themename_custom_header_setup' );
 
 add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
 function wpdocs_theme_setup() {
-    // add_image_size( 'blog-thumb', 400, 550, true ); // (cropped)
-    // add_image_size( 'single-post-thumb', 1000, 650);
-
-   // Blog posts: 1200 x 630px
-// Hero images (full screen images): 2880 x 1500px
-// Landscape feature image: 900 x 1200px
-// Portrait feature image: 1200 x 900
-// Fullscreen slideshow: 2800 x 1500px
-// Gallery images: 1500px x auto width
 
 
     // Add featured image sizes
@@ -243,16 +234,24 @@ function wpdocs_theme_setup() {
     add_image_size( 'featured-small', 700, 460, true, true ); // width, height, crop
     add_image_size( 'featured-gallery',600, 400, true ); // width, height, crop
 
+}
 
-    // Register the three useful image sizes for use in Add Media modal
-    // add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
-    // function wpshout_custom_sizes( $sizes ) {
-    //     return array_merge( $sizes, array(
-    //         'medium-width' => __( 'Medium Width', 'personal-blog'),
-    //         'medium-height' => __( 'Medium Height', 'personal-blog'),
-    //         'medium-something' => __( 'Medium Something', 'personal-blog'),
-    //     ) );
-    // }
+add_filter('wp_handle_upload_prefilter','tc_handle_upload_prefilter');
+function tc_handle_upload_prefilter($file)
+{
+
+    $img=getimagesize($file['tmp_name']);
+    $minimum = array('width' => '320', 'height' => '213');
+    $width= $img[0];
+    $height =$img[1];
+
+    if ($width < $minimum['width'] )
+        return array("error"=>"Image dimensions are too small. Minimum width is {$minimum['width']}px. Uploaded image width is $width px");
+
+    elseif ($height <  $minimum['height'])
+        return array("error"=>"Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image height is $height px");
+    else
+        return $file;
 }
 
 /**
