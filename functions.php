@@ -222,7 +222,7 @@ add_action( 'after_setup_theme', 'themename_custom_header_setup' );
 add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
 function wpdocs_theme_setup() {
 
-
+set_post_thumbnail_size(850, 560, ['center', 'center']);
     // Add featured image sizes
     add_image_size( 'hero', 2880, 1500 );
     add_image_size( 'landscape-post-image', 1200, 900, true );
@@ -236,23 +236,23 @@ function wpdocs_theme_setup() {
 
 }
 
-add_filter('wp_handle_upload_prefilter','tc_handle_upload_prefilter');
-function tc_handle_upload_prefilter($file)
-{
-
-    $img=getimagesize($file['tmp_name']);
-    $minimum = array('width' => '320', 'height' => '213');
-    $width= $img[0];
-    $height =$img[1];
-
-    if ($width < $minimum['width'] )
-        return array("error"=>"Image dimensions are too small. Minimum width is {$minimum['width']}px. Uploaded image width is $width px");
-
-    elseif ($height <  $minimum['height'])
-        return array("error"=>"Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image height is $height px");
-    else
-        return $file;
-}
+// add_filter('wp_handle_upload_prefilter','tc_handle_upload_prefilter');
+// function tc_handle_upload_prefilter($file)
+// {
+//
+//     $img=getimagesize($file['tmp_name']);
+//     $minimum = array('width' => '320', 'height' => '213');
+//     $width= $img[0];
+//     $height =$img[1];
+//
+//     if ($width < $minimum['width'] )
+//         return array("error"=>"Image dimensions are too small. Minimum width is {$minimum['width']}px. Uploaded image width is $width px");
+//
+//     elseif ($height <  $minimum['height'])
+//         return array("error"=>"Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image height is $height px");
+//     else
+//         return $file;
+// }
 
 /**
  * Registers an editor stylesheet for the theme.
